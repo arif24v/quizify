@@ -1,17 +1,16 @@
 import Link from "next/link"
 import Image from 'next/image'
 
-import logo from "./../../../public/logo.png"
-import profile from "./../../../public/profile.jpg"
+import profile from "./../../../../public/profile.jpg"
 
 export default function Home() {
     return (
         <main >
             <div className = "bg-yellow-100 w-full flex flex-row gap-12 h-16 items-center justify-center p-8 sticky top-0">
-                <div className="text-4xl text-yellow-700 justify-center"> QUIZIFY!</div>
+                <Link className="text-4xl text-yellow-700 justify-center" href="/"> QUIZIFY!</Link>
                 <div className="flex flex-row max-md:hidden gap-8">
                     <Link className = "hover:underline text-lg font-mono" href="/create"> Create </Link>
-                    <Link className = "hover:underline whitespace-nowrap text-lg font-mono" href="/"> Your Library </Link>
+                    <Link className = "hover:underline whitespace-nowrap text-lg font-mono" href="/library"> Your Library </Link>
                 </div>
                 
                 <div className="flex flex-row w-1/2" data-twe-input-wrapper-init data-twe-input-group-ref>
@@ -38,7 +37,7 @@ export default function Home() {
                     </button>
                 </div>
                 <div className="flex-1" />
-                <Link className = "hover:underline text-lg font-mono whitespace-nowrap" href="/">Sign In/Register</Link>
+                <Link className = "hover:underline text-lg font-mono whitespace-nowrap" href="/login">Sign In/Register</Link>
                 <div>
                     <button className="block md:hidden">
                         <svg className = "w-5 h-5" xlmns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
