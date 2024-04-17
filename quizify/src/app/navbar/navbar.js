@@ -1,10 +1,14 @@
 import Link from "next/link"
+import Image from 'next/image'
+
+import logo from "./../../../public/logo.png"
+import profile from "./../../../public/profile.jpg"
 
 export default function Home() {
     return (
         <main >
             <div className = "bg-yellow-100 w-full flex flex-row gap-12 h-16 items-center justify-center p-8 sticky top-0">
-                <div> LOGO</div>
+                <div className="text-4xl text-yellow-700 justify-center"> QUIZIFY!</div>
                 <div className="flex flex-row max-md:hidden gap-8">
                     <Link className = "hover:underline text-lg font-mono" href="/create"> Create </Link>
                     <Link className = "hover:underline whitespace-nowrap text-lg font-mono" href="/"> Your Library </Link>
@@ -42,7 +46,7 @@ export default function Home() {
                         </svg>
                     </button>
                 </div>
-                <div> PFP </div>
+                <div>PFP </div>
             </div>
             <div className=" flex flex-col w-full h-1 bg-yellow-400" />
             

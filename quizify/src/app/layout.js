@@ -17,16 +17,21 @@ export default function RootLayout({ children }) {
       <body className="bg-yellow-300">
         <div className="w-full min-h-screen flex flex-col relative">
           <Navbar />
-          <div className = "flex flex-row"> 
-            <div className = "flex flex-row"> 
+          <div className = "flex flex-row w-full"> 
+            <div className = "flex flex-row w-full"> 
               <Domain title={"Function Groups"} description={"Lorem Ipsum"} author={"Devin"} />
             </div>
-            <div className = "flex flex-row">
+            <div className = "flex flex-row w-full">
               <Domain title={"Function Groups"} description={"Lorem Ipsum"} author={"Devin"} />
             </div>
-
+            <div className = "flex flex-row w-full">
+              <Domain title={"Function Groups"} description={"Lorem Ipsum"} author={"Devin"} />
+            </div>
           </div>
         </div>
+
+        
+
       </body>
     </html>
   );

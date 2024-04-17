@@ -1,6 +1,6 @@
 export default function Domain(props) {
     return (
-        <div className = "rounded-lg border-2 border-gray-400 w-full bg-yellow-400 p-4" >
+        <div className = "rounded-lg border-2 border-gray-400 w-full bg-yellow-400 p-4 m-3" >
             <div className="text-lg font-mono text-black"> 
                 {props.title}
             </div>
