@@ -12,11 +12,13 @@ export default function Post({ params }) {
 
   let [domain, setDomain] = useState();
   let [currentCard, setCurrentCard] = useState(0);
-  let [td, setTd] = useState(true);
-  const [isActive, setIsActive] = useState(false);
 
-  const[isFlipping, setIsFlipping] = useState(false);
-  const[isAnimating, setIsAnimating] = useState(false);
+  function handleFlip() {
+    if (!isAnimating) {
+      setIsFlipped(!isFlipped);
+      setIsAnimating(true);
+    }
+  }
 
   const searchParams = useSearchParams();
   const id = searchParams.get('id');
@@ -45,6 +47,20 @@ export default function Post({ params }) {
     }
   }
 
+  const [isFlipped, setIsFlipped] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [td, setTd] = useState(true);
+
+  function handleFlip() {
+    if (!isAnimating) {
+      setIsAnimating(true);
+      setIsFlipped(!isFlipped);
+      setTimeout(() => {
+        setTd(!td);
+      }, 300); // 0.3 second delay
+    }
+  }
+
 
     return (
       <main>
@@ -52,28 +68,30 @@ export default function Post({ params }) {
           <div className="">
             <div className="text-5xl ml-10 mt-10 mb-5"> {domain.title} </div>
             <div className="text-3xl ml-10 mb-10"> {domain.description} </div>
-            <motion.div
-                className="hover:cursor-pointer"
-                onClick={() => setIsActive(!isActive)}
-                animate={{
-                  rotate: isActive ? 180 : 0
-            }}>
-              <div className="w-full h-96 flex items-center justify-center">
-
-                  <div className="bg-yellow-700 rounded-lg text-center flex justify-center items-center w-1/2 p-20 h-full"> 
-                    {td &&
-                      <p> {domain.cards[currentCard].term} </p>
-                    }
-                    {!td && 
-                      <p> {domain.cards[currentCard].def} </p>
-                    }
-                  </div>
-                
-              </div>
+            <div className="flip-card"> 
+              <motion.div
+                className="flip-card-inner w-[100%] h-[100%]"
+                initial={false}
+                animate={{ rotateY: isFlipped ? 180 : 360 }}
+                transition={{ duration: 0.6, animationDirection: "normal" }}
+                onAnimationComplete={() => setIsAnimating(false)}
+              >
+                <div className="w-full h-96 flex items-center justify-center">
+                    <div className="bg-yellow-700 rounded-lg text-center flex justify-center items-center w-1/2 p-20 h-full"> 
+                      {td &&
+                        <div className="flip-card-front"> {domain.cards[currentCard].term} </div>
+                      }
+                      {!td && 
+                        <div className="flip-card-back transform scale-x-[-1]"> {domain.cards[currentCard].def} </div>
+                      }
+                    </div>
+                </div>
             </motion.div>
+            </div>
+
             <div className="flex flex-row gap-5 items-center justify-center m-5">
               <button className="rounded-2xl bg-amber-300 p-3" onClick={(e) => increment(e, 1)}> PREV </button>
-              <button className="rounded-2xl bg-amber-300 p-3" onClick={(e) => setTd(!td)}> FLIP </button>
+              <button className="rounded-2xl bg-amber-300 p-3"  onClick={handleFlip}> FLIP </button>
               <button className="rounded-2xl bg-amber-300 p-3" onClick={(e) => increment(e, -1)}> NEXT </button>
             </div>
           </div>
