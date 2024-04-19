@@ -19,10 +19,6 @@ export default function Page() {
         e.preventDefault();
         if (newCard.term !== "" && newCard.def !== "") {
             setCards([...cards, newCard]);
-            /*const docRef = await addDoc(collection(db, "cards"), {
-                term: newCard.term.trim(),
-                def: newCard.def.trim()
-            });*/
             setNewCard({term: '', def: ''});
         }
     }
@@ -32,14 +28,8 @@ export default function Page() {
         if (title !== "" && description !== "") {
             const docRefMeta = await addDoc(collection(db, "domains"), {
                 title: title,
-                description: description
-            })
-            const docRefCards = collection(db, 'domains', docRefMeta.id, 'cards');
-            cards.map(async (card) => {
-                const docRef = await addDoc(docRefCards, {
-                    term: card.term.trim(),
-                    def: card.def.trim()
-                })
+                description: description,
+                cards: cards
             })
         }
     }
@@ -50,7 +40,7 @@ export default function Page() {
         setCards(newArray);
     }
 
-    useEffect(() => {
+    /*useEffect(() => {
         const q = query(collection(db, 'cards'))
         const unsubscribe = onSnapshot(q, (querySnapshot) =>  {
             let cardsArr = [];
@@ -62,7 +52,7 @@ export default function Page() {
         })
 
         return unsubscribe
-    }, [])
+    }, [])*/
 
     const handleChange = () => {
         console.log(passwordBool);
