@@ -33,7 +33,6 @@ export default function Post({ params }) {
   async function fetchDomain() {
     const domainDoc = await getDoc(doc(db, "domains/" + id))
     setDomain(domainDoc.data());
-    console.log(domain);
   }
 
   function increment(e, factor) {
@@ -57,7 +56,7 @@ export default function Post({ params }) {
       setIsFlipped(!isFlipped);
       setTimeout(() => {
         setTd(!td);
-      }, 300); // 0.3 second delay
+      }, 200); // 0.3 second delay
     }
   }
 

@@ -1,0 +1,12 @@
+@keyframes blur-animation {
+    0% {
+        backdrop-filter: blur(0px);
+    }
+    100% {
+        backdrop-filter:blur(5px);
+    }
+}
+
+.popup {
+    animation: blur-animation;
+}
