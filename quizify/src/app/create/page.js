@@ -7,8 +7,11 @@ import { getDownloadURL, ref, listAll, uploadBytes } from "firebase/storage"
 import { v4 } from "uuid"
 import { AnimatePresence, motion } from "framer-motion"
 import { Link } from "next/link"
+import { useRouter } from 'next/navigation';
 
 export default function Page() {
+
+    const router = useRouter();
 
     const [cards, setCards] = useState([
         
@@ -31,21 +34,17 @@ export default function Page() {
     const addTodb = async (e) => {
         e.preventDefault();
         if (title !== "" && description !== "") {
-            
-            if (images != null) {
-                const urls = await Promise.all(images.map(async (image, id) => {
-                    if (image != null) {
-                        const imgRef = ref(imagedb, `files/${v4()}`)
-                        await uploadBytes(imgRef, image);
-                        return getDownloadURL(imgRef);
-                    } else {
-                        return null;
-                    }
-                }));
-                await addFields(urls);
-            } else {
-                addFields(null);
-            }
+            const urls = await Promise.all(images.map(async (image, id) => {
+                if (image != null) {
+                    const imgRef = ref(imagedb, `files/${v4()}`)
+                    await uploadBytes(imgRef, image);
+                    return getDownloadURL(imgRef);
+                } else {
+                    return null;
+                }
+            }));
+            await addFields(urls);
+            router.push("/");
         }
     }
 
