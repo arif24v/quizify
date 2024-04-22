@@ -197,10 +197,10 @@ export default function Page() {
                                 </div>
                             ) :  (
                                 <div className = "flex flex-row w-full font-mono text-amber-700 bg-amber-500 rounded-b-md">
-                                    <p className="flex flex-row text-lg ml-5 mt-5 mb-5"> TERM: </p>
-                                    <p className = "flex flex-row text-lg m-5 w-1/2"> {card.term}</p>
-                                    <p className="flex flex-row text-lg ml-5 mt-5 mb-5"> DEF: </p>
-                                    <p className = "flex flex-row text-lg m-5 w-1/2"> {card.def}</p>
+                                    <p className="flex flex-row text-lg ml-5 mt-5 mb-5 min-w-14"> TERM: </p>
+                                    <p className = "flex flex-row text-lg m-5 w-1/2 break-all"> {card.term}</p>
+                                    <p className="flex flex-row text-lg ml-5 mt-5 mb-5 min-w-14"> DEF: </p>
+                                    <p className = "flex flex-row text-lg m-5 w-1/2 break-all"> {card.def}</p>
                                 </div>
                             )}
                             
@@ -269,7 +269,6 @@ export default function Page() {
                         </div> 
                     </div>
                 }
-            
         </main>
     );
 }
