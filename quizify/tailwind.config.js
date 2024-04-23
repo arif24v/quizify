@@ -11,7 +11,7 @@ module.exports = {
       current: 'currentColor',
       'beige': '#ece7d4',
       'brown': '#665300',
-      'midnight': '#121063',
+      'white': '#fcf9f3ff',
       'metal': '#565584',
       'tahiti': '#3ab7bf',
       'silver': '#ecebff',
