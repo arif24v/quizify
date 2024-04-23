@@ -1,9 +1,11 @@
 import Link from "next/link"
 
+
 export default function Domain(props) {
+    
     return (
         <Link href={'/sets?id=' + props.author}>
-            <div className = "rounded-lg border-2 border-gray-400 w-full bg-yellow-400 p-4 m-3 ease-in-out duration-200 hover:cursor-pointer hover:-translate-y-2 hover:shadow-lg hover:shadow-yellow-500" >
+            <div className = "rounded-lg border-2 border-brown w-full bg-beige p-4 m-3 ease-in-out duration-200 hover:cursor-pointer hover:-translate-y-2 hover:shadow-lg hover:shadow-yellow-500" >
                 <div className="text-lg font-mono text-black overflow-hidden text-ellipsis"> 
                     {props.title}
                 </div>
