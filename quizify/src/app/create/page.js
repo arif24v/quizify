@@ -1,3 +1,9 @@
+//term number (top left) --> start from 1 instead of 0
+//(for unit testing) checks for empty domain, domain without title/description, term with only image
+//labels for domain naming and description fields? (possibly unintuitive)
+//indicators for a term with an image uploaded to it (small symbol on the term? + indication that image that user chooses has been uploaded successfully)
+//editing terms has a sliding bar 
+
 "use client"
 
 import { collection, addDoc, getDoc, query, onSnapshot } from "firebase/firestore" 
