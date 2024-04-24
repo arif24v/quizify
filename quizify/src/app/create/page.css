@@ -1,3 +1,8 @@
+/* Color for new term when created same color as background */
+/* Delete and edit buttons different colors (red and white?) */
+/* "Finish" button/link with colored background (green? grey?) */
+/* Colored backgrounds for img upload and "Add" buttons (grey and green possibly) */
+
 @keyframes blur-animation {
     0% {
         backdrop-filter: blur(0px);

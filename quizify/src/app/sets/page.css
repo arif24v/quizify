@@ -1,3 +1,8 @@
+/* Button backgrounds for "Prev" "Next" and "Flip" */
+/* Fonts for Title and Description */
+/* Different color front and back card (might make it easier on eyes when flipping) */
+/* Animation for moving between cards (next/previous sliding animation?) */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
