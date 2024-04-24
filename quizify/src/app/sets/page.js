@@ -1,3 +1,7 @@
+//Allow card to flip when clicked on (along with the "Flip" button
+//Verical flip instead of horizontal? (not super important)
+//Counter below card and buttons to show progress through domain? (i.e. 4/23 or a progress bar)
+
 "use client"
 
 import Domain from "./../components/domains/domain.js";
