@@ -6,11 +6,11 @@ import profile from "./../../../../public/profile.jpg"
 export default function Home() {
     return (
         <main >
-            <div className = "bg-beige w-full flex flex-row gap-12 h-16 items-center justify-center p-8 sticky top-0">
+            <div className = "bg-tan w-full flex flex-row gap-12 h-16 items-center justify-center p-8 sticky top-0">
                 <Link className="text-4xl text-brown justify-center" href="/"> QUIZIFY!</Link>
                 <div className="flex flex-row max-md:hidden gap-8">
-                    <Link className = "hover:underline text-lg font-mono" href="/create"> Create </Link>
-                    <Link className = "hover:underline whitespace-nowrap text-lg font-mono" href="/library"> Your Library </Link>
+                    <Link className = "hover:underline text-brown font-mono" href="/create"> Create </Link>
+                    <Link className = "hover:underline whitespace-nowrap text-brown font-mono" href="/library"> Your Library </Link>
                 </div>
                 
                 <div className="flex flex-row w-1/2" data-twe-input-wrapper-init data-twe-input-group-ref>
@@ -43,7 +43,7 @@ export default function Home() {
                 </div>
                 <div>PFP </div>
             </div>
-            <div className=" flex flex-col w-full h-1 bg-yellow-400" />
+            <div className=" flex flex-col w-full h-1 bg-tan" />
             
 
         </main>

@@ -117,35 +117,35 @@ export default function Page() {
 
     return (
         <main>
-            <div className="flex flex-col bg-amber-400 p-3 m-3 rounded-md">
-                <input type="text" className="h-full focus:text-lg ease-in-out duration-200 flex flex-col font-mono w-5/12 m-3 bg-transparent outline-none border-b-4 border-b-yellow-600 pl-1 placeholder-amber-600 text-yellow-600" onChange={(e) => setTitle(e.target.value)} placeholder="Enter Title" />
+            <div className="flex flex-col bg-beige p-3 m-3 rounded-md">
+                <input type="text" className="h-full focus:text-lg ease-in-out duration-200 flex flex-col font-mono w-5/12 m-3 bg-transparent outline-none border-b-4 border-b-darkgray pl-1 placeholder-darkgray text-darkgray" onChange={(e) => setTitle(e.target.value)} placeholder="Enter Title" />
                 <div className="flex flex-row w-full">
-                    <input type="text" className="h-full focus:text-lg ease-in-out duration-200 flex flex-col font-mono w-5/12 m-3 bg-transparent outline-none border-b-4 border-b-yellow-600 pl-1 placeholder-amber-600 text-yellow-600" onChange={(e) => setDescription(e.target.value)} placeholder="Enter Description" />
+                    <input type="text" className="h-full focus:text-lg ease-in-out duration-200 flex flex-col font-mono w-5/12 m-3 bg-transparent outline-none border-b-4 border-b-darkgray pl-1 placeholder-darkgray text-darkgray" onChange={(e) => setDescription(e.target.value)} placeholder="Enter Description" />
                     <div className="flex-1" />
                     <input type="checkbox" onChange={handleChange} className="text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 outline-none dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"></input>
                     {passwordBool && (
-                        <input type="text" className="h-full focus:text-lg ease-in-out duration-200 flex flex-col font-mono w-5/12 mr-16 ml-2 mt-3 mb-3 bg-transparent outline-none border-b-4 border-b-yellow-600 pl-1 placeholder-amber-600 text-yellow-600" placeholder="Password" />
+                        <input type="text" className="h-full focus:text-lg ease-in-out duration-200 flex flex-col font-mono w-5/12 mr-16 ml-2 mt-3 mb-3 bg-transparent outline-none border-b-4 border-b-darkgray pl-1 placeholder-darkgray text-darkgray" placeholder="Password" />
                     )}
                     {!passwordBool && (
                         <div className="flex-1" />
                     )}
                 </div>
             </div>
-            <div className="bg-amber-500 m-3 rounded-md"> 
+            <div className="bg-gray m-3 rounded-md"> 
                 <div className="flex flex-row w-full">
                     <input type="text" 
-                        className="focus:border-b-4 rounded-md font-mono w-1/2 m-3 bg-transparent outline-none border-2 border-yellow-600 pl-1 placeholder-amber-700 text-amber-800" 
+                        className="focus:border-b-4 rounded-md font-mono w-1/2 m-3 bg-transparent outline-none border-2 border-beige pl-1 placeholder-grey-700 text-black" 
                         placeholder="term" 
                         onChange={(e) => setNewCard({...newCard, term:e.target.value})}
                         value={newCard.term}
                         /> 
                     <input type="text" 
-                        className="focus:border-b-4 rounded-md font-mono w-1/2 m-3 bg-transparent outline-none border-2 border-yellow-600 pl-1 placeholder-amber-700 text-amber-800" 
+                        className="focus:border-b-4 rounded-md font-mono w-1/2 m-3 bg-transparent outline-none border-2 border-beige pl-1 placeholder-grey-700 text-black" 
                         placeholder="def" 
                         value={newCard.def}
                         onChange={(e) => setNewCard({...newCard, def:e.target.value})}
                     />
-                    <button className = "m-2 rounded-md bg-amber-600 hover:bg-amber-700 ease-in-out duration-100 font-mono text-lg align-center p-2" onClick={() => setUploading(true)}> 
+                    <button className = "m-2 rounded-md bg-beige hover:bg-tan ease-in-out duration-100 font-mono text-lg align-center p-2" onClick={() => setUploading(true)}> 
                         {currentImage == null ? 
                             (
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -160,7 +160,7 @@ export default function Page() {
                             )
                         }
                     </button>
-                    <button className = "m-2 rounded-md bg-amber-600 hover:bg-amber-700 ease-in-out duration-100 font-mono text-lg align-center p-2" onClick={addCard}> Add </button>
+                    <button className = "m-2 rounded-md bg-beige hover:bg-tan ease-in-out duration-100 font-mono text-lg align-center p-2" onClick={addCard}> Add </button>
                 </div>
             </div>
             {cards.map((card, id) => (
@@ -173,7 +173,7 @@ export default function Page() {
                     >
                         <div className="m-3">
                             <div className = "w-full bg-amber-500 mb-1 rounded-t-md flex flex-row p-3"> 
-                                <div className="font-mono text-amber-700"> {id} </div>
+                                <div className="font-mono text-gray"> {id} </div>
                                 <div className="flex-1" />
                                 {   images[id] && (
                                     <div className="font-mono text-black bg-cyan-300 ease-in-out duration-100 pl-3 pr-3 mr-4 max-w-32 overflow-hidden rounded-md">
@@ -210,7 +210,7 @@ export default function Page() {
                 </AnimatePresence>
             ))}
             <div className="m-3">
-                <button onClick={addTodb} className="font-mono text-xl flex justify-center align-center w-full p-2 hover:bg-amber-600 bg-amber-700 rounded-md ease-in-out duration-100"> FINISH </button>
+                <button onClick={addTodb} className="font-mono text-xl flex justify-center align-center w-full p-2 hover:bg-brown bg-tan rounded-md ease-in-out duration-100"> FINISH </button>
             </div>
 
                 { deleting != null && 

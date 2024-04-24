@@ -6,20 +6,16 @@ module.exports = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    colors: {
-      transparent: 'transparent',
-      current: 'currentColor',
-      'beige': '#ece7d4',
-      'brown': '#665300',
-      'white': '#fcf9f3ff',
-      'metal': '#565584',
-      'tahiti': '#3ab7bf',
-      'silver': '#ecebff',
-      'bubble-gum': '#ff77e9',
-      'bermuda': '#78dcca',
-    },
     extend: {
-      backgroundImage: {
+      colors: {
+        transparent: 'transparent',
+        current: 'currentColor',
+        'gray': '#eeeeee',
+        'beige': '#fcf9f3',
+        'tan': '#ece7d4',
+        'brown': '#86530b'
+
+      },backgroundImage: {
         
       },
     },
