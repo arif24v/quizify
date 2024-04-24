@@ -33,18 +33,20 @@ export default function Page() {
 
     const addTodb = async (e) => {
         e.preventDefault();
-        if (title !== "" && description !== "") {
-            const urls = await Promise.all(images.map(async (image, id) => {
-                if (image != null) {
-                    const imgRef = ref(imagedb, `files/${v4()}`)
-                    await uploadBytes(imgRef, image);
-                    return getDownloadURL(imgRef);
-                } else {
-                    return null;
-                }
-            }));
-            await addFields(urls);
-            router.push("/");
+        if (cards.length != 0) {
+            if (title !== "" && description !== "") {
+                const urls = await Promise.all(images.map(async (image, id) => {
+                    if (image != null) {
+                        const imgRef = ref(imagedb, `files/${v4()}`)
+                        await uploadBytes(imgRef, image);
+                        return getDownloadURL(imgRef);
+                    } else {
+                        return null;
+                    }
+                }));
+                await addFields(urls);
+                router.push("/");
+            }
         }
     }
 

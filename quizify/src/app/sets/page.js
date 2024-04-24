@@ -13,6 +13,9 @@ export default function Post({ params }) {
   let [domain, setDomain] = useState();
   let [currentCard, setCurrentCard] = useState(0);
 
+  // DISPLAY ATTACHMENTS IN MODAL
+  let[showingImage, setShowingImage] = useState(false);
+
   function handleFlip() {
     if (!isAnimating) {
       setIsFlipped(!isFlipped);
@@ -67,6 +70,20 @@ export default function Post({ params }) {
           <div className="">
             <div className="text-5xl ml-10 mt-10 mb-5"> {domain.title} </div>
             <div className="text-3xl ml-10 mb-10"> {domain.description} </div>
+            
+              <div className="flex items-center justify-center">
+                <div className="w-1/2 flex justify-end">
+                  <div className="font-mono text-black bg-cyan-300 hover:bg-cyan-400 ease-in-out duration-100 pl-3 pr-3 mb-3 overflow-hidden rounded-md">
+                  {domain.cards[currentCard].imageUrl &&
+                    <button onClick={() => setShowingImage(true) }className= "font-mono text-black ease-in-out duration-100 overflow-hidden rounded-md text-nowrap"> View Attachment </button>
+                  }
+                  {!domain.cards[currentCard].imageUrl &&
+                    <div>&nbsp;</div>
+                  }
+                 </div>
+                </div>
+              </div>
+            
             <div className="flip-card"> 
               <motion.div
                 className="flip-card-inner w-[100%] h-[100%]"
@@ -76,16 +93,17 @@ export default function Post({ params }) {
                 onAnimationComplete={() => setIsAnimating(false)}
               >
                 <div className="w-full h-96 flex items-center justify-center">
-                    <div className="bg-yellow-700 rounded-lg text-center flex justify-center items-center w-1/2 p-20 h-full"> 
+                    <div className="bg-metal rounded-lg text-center flex justify-center items-center w-1/2 p-20 h-full"> 
                       {td &&
-                        <div className="flip-card-front"> {domain.cards[currentCard].term} </div>
+                        <div className="flip-card-front  overflow-auto"> {domain.cards[currentCard].term} </div>
                       }
                       {!td && 
-                        <div className="flip-card-back transform scale-x-[-1]"> {domain.cards[currentCard].def} </div>
+                        <div className="flip-card-back transform scale-x-[-1]  overflow-auto"> {domain.cards[currentCard].def} </div>
                       }
                     </div>
                 </div>
-            </motion.div>
+              </motion.div>
+              
             </div>
 
             <div className="flex flex-row gap-5 items-center justify-center m-5">
@@ -93,6 +111,21 @@ export default function Post({ params }) {
               <button className="rounded-2xl bg-amber-300 p-3"  onClick={handleFlip}> FLIP </button>
               <button className="rounded-2xl bg-amber-300 p-3" onClick={(e) => increment(e, -1)}> NEXT </button>
             </div>
+          </div>
+        }
+
+        { showingImage && 
+
+          <div className={"backdrop-blur-lg fixed inset-0 bg-opacity-25 flex flex-col justify-center items-center"}>
+                <div className="flex flex-col text-3xl p-7 font-mono">
+                  <img className="w-[50vw] h-[50vh]" src = {domain.cards[currentCard].imageUrl} />
+                </div>
+
+                <div className="flexflex-row mt-5">
+                    <button onClick = {(e) => setShowingImage(false)} className="hover:bg-gray-200 ease-in-out duration-150 rounded-lg font-mono bg-gray-100 p-3 flex flex-row m-3">
+                        Exit
+                    </button>
+                </div>     
           </div>
         }
       </main>
