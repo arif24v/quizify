@@ -77,14 +77,17 @@ export default function Post({ params }) {
             
               <div className="flex items-center justify-center">
                 <div className="w-1/2 flex justify-end">
-                  <div className="font-mono text-black bg-cyan-300 hover:bg-cyan-400 ease-in-out duration-100 pl-3 pr-3 mb-3 overflow-hidden rounded-md">
+                  
                   {domain.cards[currentCard].imageUrl &&
-                    <button onClick={() => setShowingImage(true) }className= "font-mono text-black ease-in-out duration-100 overflow-hidden rounded-md text-nowrap"> View Attachment </button>
+                    <div className="font-mono text-black bg-cyan-300 hover:bg-cyan-400 ease-in-out duration-100 pl-3 pr-3 mb-3 overflow-hidden rounded-md">
+                      <button onClick={() => setShowingImage(true) }className= "font-mono text-black ease-in-out duration-100 overflow-hidden rounded-md text-nowrap"> View Attachment </button>
+                    </div>
                   }
                   {!domain.cards[currentCard].imageUrl &&
-                    <div>&nbsp;</div>
+                    <div className="font-mono text-black ease-in-out duration-100 pl-3 pr-3 mb-3 overflow-hidden rounded-md">
+                    < div>&nbsp;</div>
+                    </div>
                   }
-                 </div>
                 </div>
               </div>
             
