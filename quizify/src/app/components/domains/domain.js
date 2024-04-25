@@ -5,7 +5,7 @@ export default function Domain(props) {
     
     return (
         <Link href={'/sets?id=' + props.author}>
-            <div className = "rounded-lg border-2 border-black w-full bg-gray p-4 m-3 ease-in-out duration-200 hover:cursor-pointer hover:-translate-y-2 hover:shadow-lg hover:shadow-yellow-500" >
+            <div className = "rounded-lg border-2 border-black w-full bg-gray p-4 m-3 ease-in-out duration-200 hover:cursor-pointer hover:-translate-y-2 hover:shadow-lg hover:shadow-btn-200" >
                 <div className="text-lg font-mono text-black overflow-hidden text-ellipsis"> 
                     {props.title}
                 </div>
