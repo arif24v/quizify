@@ -26,8 +26,7 @@ export default function Home() {
                                 viewBox="0 0 24 24"
                                 strokeWidth="1.5"
                                 stroke="currentColor">
-                                    <path
-                                    d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                                    <path d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                             </svg>
                         </span>
                     </button>
@@ -41,9 +40,11 @@ export default function Home() {
                         </svg>
                     </button>
                 </div>
-                <div>PFP </div>
+                <Link href="/profile">
+                    <img className="rounded-full w-14 h-14" src = "https://static.vecteezy.com/system/resources/previews/018/765/757/original/user-profile-icon-in-flat-style-member-avatar-illustration-on-isolated-background-human-permission-sign-business-concept-vector.jpg" />
+                </Link>
             </div>
-            <div className=" flex flex-col w-full h-1 bg-tan" />
+            <div className=" flex flex-col w-full h-1 bg-slate-300" />
             
 
         </main>
