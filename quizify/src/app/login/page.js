@@ -1,6 +1,11 @@
+"use client"
+
+import { useState } from "react";
+import ReactDOM from "react-dom/client";
 
 export default function Page() {
     let state = "L";
+    const [stateIn, setState] = useState("Log In");
     async function switchMethod(m){
         console.log("test");
         if(!m===state){
@@ -27,13 +32,13 @@ export default function Page() {
                     </div>
                     <div>
                         <div class="h-[4vw]">
-                            <button class="btn btn-link position-absolute start-[60vw] " type="button" onclick={switchMethod("L")}>Log In</button>
-                            <button class="btn btn-link position-absolute start-[80vw]" type="button" onclick={switchMethod("S")}>Sign Up</button>
+                            <button class="btn btn-link position-absolute start-[60vw] " type="button" onClick={() => setState("Log In")}>Log In</button>
+                            <button class="btn btn-link position-absolute start-[80vw]" type="button" onClick={() => setState("Sign Up")}>Sign Up</button>
                         </div>
                         
                         <form className="flex flex-col position-absolute start-[60vw]">
                             <div class="mx-auto">
-                                <h1 class="display-3 h-[10vw]" id="title">Log In</h1> 
+                                <h1 class="display-3 h-[10vw]" id="title">{stateIn}</h1> 
                             </div>
                             <div class="form-row align-items-center">
                                 <label for="inputUser" class="h4">Username</label>
@@ -44,7 +49,7 @@ export default function Page() {
                                 <label for="inputPass" class="h4">Password</label>
                                 <input type="text" class="form-control" id="inputPass" placeholder="Password"></input>
                             </div>
-                            <button type="submit" class="btn btn-primary" id="submit">Sign in</button>
+                            <button type="submit" class="btn btn-primary" id="submit">{stateIn}</button>
                         </form>
                     </div>
                 </div>
