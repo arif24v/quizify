@@ -6,6 +6,8 @@ import React, { useState, useEffect } from 'react'
 import { db } from "./firebase"
 import Link from "next/link"
 
+import profile from "./../../public/profile.png"
+
 export default function Home() {
 
     let [domains, setDomains] = useState([]);
