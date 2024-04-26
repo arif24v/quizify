@@ -32,19 +32,21 @@ export default function Page() {
                         </div>
                         
                         <form className="flex flex-col position-absolute start-[60vw]">
+                        
                             <div class="mx-auto">
-                                <h1 class="display-3 h-[10vw]" id="title">Log In</h1> 
+                                <img src="owl.png" className="w-[7vw] h-[8vw] mx-auto" />
+                                <h1 class="display-4 h-[10vw]" id="title">Log In</h1> 
                             </div>
                             <div class="form-row align-items-center">
                                 <label for="inputUser" class="h4">Username</label>
                                 <input type="text" class="form-control" id="inputUser" placeholder="Username"></input>
                             </div>
                             <div class="h-[2vw]"></div>
-                            <div class="form-group">
+                            <div class="form-group h-[7vw]">
                                 <label for="inputPass" class="h4">Password</label>
                                 <input type="text" class="form-control" id="inputPass" placeholder="Password"></input>
                             </div>
-                            <button type="submit" class="btn btn-primary" id="submit">Sign in</button>
+                            <button type="submit" class="m-2 rounded-md bg-beige hover:bg-tan ease-in-out duration-100 font-mono text-lg align-center p-2" id="submit">Sign in</button>
                         </form>
                     </div>
                 </div>
