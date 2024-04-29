@@ -1,20 +1,71 @@
-
-export default function Page() {
-    let state = "L";
-    async function switchMethod(m){
-        console.log("test");
-        if(!m===state){
-            if(m==="L"){
-                console.log("logging in");
-                state = "L";
-                title.innerText="Log In";
-            } else{
-                console.log("signing up");
-                state = "S";
-                title.innerText="Sign Up";
+import { initializeApp } from 'firebase/app';
+import { getFirestore, collection, addDoc } from 'firebase/firestore';
+import { doc, getDoc } from "firebase/firestore";
+const firebaseConfig = {
+    apiKey: "AIzaSyDXcWSpDtCVtzFfCUcgm1f0fR_GsGxda4A",
+    authDomain: "quiz-52ae4.firebaseapp.com",
+    projectId: "quiz-52ae4",
+    storageBucket: "quiz-52ae4.appspot.com",
+    messagingSenderId: "624244774274",
+    appId: "1:624244774274:web:cd8939e5709682c89d2b9b",
+    measurementId: "G-7RP3NKVMY4"
+  };
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const logins = collection(db, 'logins');
+const loginData = {
+    user: 'username',
+    pass: 'pass'
+};
+const newDocRef = await addDoc(logins, loginData);
+console.log('New document added with ID:', newDocRef.id);
+async function register(u, p){
+    //signing up, CHECK FOR DUPLICATE USERNAMES
+    const docRef = doc(db, 'logins', u);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) { //duplicate
+        return true;
+    } else{
+        const loginData = {
+            user: u,
+            pass: p
+        };
+        const newDocRef = await addDoc(logins, loginData);
+        console.log('New document added with ID:', newDocRef.id);
+        return false;
+    }
+}
+async function signin(u,p){
+    //logging in
+}
+    
+let state = "L";
+async function onclick(u,p){
+    if(inputUser.value!==""&&inputPass.value!==""){
+        if(state="L"){ //log in
+            signin(u,p);
+        } else{ //signup
+            if(register(u,p)){
+                alert("Username is taken!");
             }
         }
     }
+}
+async function switchMethod(m){
+    console.log("test");
+    if(!m===state){
+        if(m==="L"){
+            console.log("logging in");
+            state = "L";
+            title.innerText="Log In";
+        } else{
+            console.log("signing up");
+            state = "S";
+            title.innerText="Sign Up";
+        }
+    }
+}
+export default function Page() {
     return (
         <main>
             <div>
@@ -46,7 +97,8 @@ export default function Page() {
                                 <label for="inputPass" class="h4">Password</label>
                                 <input type="text" class="form-control" id="inputPass" placeholder="Password"></input>
                             </div>
-                            <button type="submit" class="m-2 rounded-md bg-beige hover:bg-tan ease-in-out duration-100 font-mono text-lg align-center p-2" id="submit">Sign in</button>
+                            <button onclick={onclick(inputUser.value, inputPass.value)}type="submit" class="m-2 rounded-md bg-beige hover:bg-tan ease-in-out duration-100 font-mono text-lg align-center p-2" id="submit">Sign in</button>
+                            
                         </form>
                     </div>
                 </div>
