@@ -79,12 +79,12 @@ export default function Post({ params }) {
                 <div className="w-1/2 flex justify-end">
                   
                   {domain.cards[currentCard].imageUrl &&
-                    <div className="font-mono text-black bg-cyan-300 hover:bg-cyan-400 ease-in-out duration-100 pl-3 pr-3 mb-3 overflow-hidden rounded-md">
+                    <div className="font-mono text-black bg-btn hover:bg-btn-200 ease-in-out duration-100 pl-3 pr-3 mb-3 overflow-hidden rounded-md">
                       <button onClick={() => setShowingImage(true) }className= "font-mono text-black ease-in-out duration-100 overflow-hidden rounded-md text-nowrap"> View Attachment </button>
                     </div>
                   }
                   {!domain.cards[currentCard].imageUrl &&
-                    <div className="font-mono text-black ease-in-out duration-100 pl-3 pr-3 mb-3 overflow-hidden rounded-md">
+                    <div className="font-mono text-black ease-in-out duration-100 pl-3 pr-3 mb-3 overflow-hidden rounded-md bg-gray">
                     < div>&nbsp;</div>
                     </div>
                   }
@@ -100,7 +100,7 @@ export default function Post({ params }) {
                 onAnimationComplete={() => setIsAnimating(false)}
               >
                 <div className="w-full h-96 flex items-center justify-center">
-                    <div className="bg-metal rounded-lg text-center flex justify-center items-center w-1/2 p-20 h-full"> 
+                    <div className="bg-gray rounded-lg text-center flex justify-center items-center w-1/2 p-20 h-full"> 
                       {td &&
                         <div className="flip-card-front  overflow-auto"> {domain.cards[currentCard].term} </div>
                       }
@@ -114,9 +114,9 @@ export default function Post({ params }) {
             </div>
 
             <div className="flex flex-row gap-5 items-center justify-center m-5">
-              <button className="rounded-2xl bg-amber-300 p-3" onClick={(e) => increment(e, 1)}> PREV </button>
-              <button className="rounded-2xl bg-amber-300 p-3"  onClick={handleFlip}> FLIP </button>
-              <button className="rounded-2xl bg-amber-300 p-3" onClick={(e) => increment(e, -1)}> NEXT </button>
+              <button className="rounded-2xl bg-btn hover:bg-btn-200 p-3" onClick={(e) => increment(e, 1)}> I KNEW THE ANSWER </button>
+              <button className="rounded-2xl bg-btn hover:bg-btn-200 p-3"  onClick={handleFlip}> FLIP </button>
+              <button className="rounded-2xl bg-btn hover:bg-btn-200 p-3" onClick={(e) => increment(e, 1)}> I DIDN'T KNOW THE ANSWER </button>
             </div>
           </div>
         }
