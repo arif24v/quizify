@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import ReactDOM from "react-dom/client";
+import Link from "next/link"
 
 export default function Page() {
     let state = "L";
@@ -23,6 +24,7 @@ export default function Page() {
     return (
         <main>
             <div>
+               // /*kinda need to get rid of this line cuz its making all the buttons highlight blue and ignore our original css but getting rid of it makes the page go weird*/
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
             </div>   
             {<div>
@@ -32,8 +34,9 @@ export default function Page() {
                     </div>
                     <div>
                         <div class="h-[4vw]">
-                            <button class="btn btn-link position-absolute start-[60vw] " type="button" onClick={() => setState("Log In")}>Log In</button>
-                            <button class="btn btn-link position-absolute start-[80vw]" type="button" onClick={() => setState("Sign Up")}>Sign Up</button>
+                            
+                            <button class="btn position-absolute start-[60vw] hover:underline text-brown font-mono" type="button" onClick={() => setState("Log In")}>Log In</button>
+                            <button class="btn position-absolute start-[80vw] hover:underline text-brown font-mono" type="button" onClick={() => setState("Sign Up")}>Sign Up</button>
                         </div>
                         
                         <form className="flex flex-col position-absolute start-[60vw]">
