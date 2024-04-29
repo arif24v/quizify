@@ -41,7 +41,7 @@ export default function Home() {
                     </button>
                 </div>
                 <Link href="/profile">
-                    <img className="rounded-full w-14 h-14" src = "https://static.vecteezy.com/system/resources/previews/018/765/757/original/user-profile-icon-in-flat-style-member-avatar-illustration-on-isolated-background-human-permission-sign-business-concept-vector.jpg" />
+                    <img className="rounded-full w-11 h-11" src = "https://cdn-icons-png.flaticon.com/512/3135/3135715.png" />
                 </Link>
             </div>
             <div className=" flex flex-col w-full h-1 bg-slate-300" />
