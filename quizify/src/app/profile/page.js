@@ -1,6 +1,12 @@
+"use client"
+
 //import profile from "./../../../../public/profile.jpg"
+import React, {useState} from 'react';
 
 export default function Page() {
+
+    let [disabledUsername, setDisabledUsername] = useState(true);
+
     return (
         <main>
             <p class="mt-8 mb-10 text-7xl text-center font-mono"> PROFILE </p>
@@ -17,7 +23,7 @@ export default function Page() {
 
                 </div>
                 <div>
-                    <input type="text" class="form-control mt-8 h-10 w-70" id="inputPass" placeholder="yuvi gawande"></input>
+                    <input type="text" disabled={disabledUsername} class="form-control mt-8 h-10 w-70" id="inputPass" placeholder="yuvi gawande"></input>
                 </div>
                 <div>
 
