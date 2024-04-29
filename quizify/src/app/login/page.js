@@ -3,10 +3,54 @@
 import { useState } from "react";
 import ReactDOM from "react-dom/client";
 import Link from "next/link"
-
+import { getFirestore, collection, addDoc } from 'firebaseLogin/firestore';
+import { doc, getDoc } from "firebaseLogin/firestore";
 export default function Page() {
-    let state = "L";
+const logins = collection(db, 'logins');
+const loginData = {
+    user: 'username',
+    pass: 'pass'
+};
+const newDocRef = addDoc(logins, loginData);
+console.log('New document added with ID:', newDocRef.id);
+async function register(u, p){
+    //check for duplicate usernames
+    const docRef = doc(db, 'logins', u);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) { //duplicate
+        return true;
+    } else{
+        const loginData = {
+            user: u,
+            pass: p
+        };
+        const newDocRef = await addDoc(logins, loginData);
+        console.log('New document added with ID:', newDocRef.id);
+        return false;
+    }
+}
+async function signin(u,p){
+    const docRef = doc(db, 'logins', u);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()&&docSnap.pass===p) { //success
+        return true;
+    } else{
+        alert("Username or password is incorrect");
+    }
+}
     const [stateIn, setState] = useState("Log In");
+    async function onclick(u,p){
+        if(inputUser.value!==""&&inputPass.value!==""){
+            if(state="L"){ //log in
+                signin(u,p);
+            } else{ //signup
+                if(register(u,p)){
+                    alert("Username is taken!");
+                }
+            }
+        }
+    }
+    
     return (
         <main>
             <div>
