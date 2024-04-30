@@ -84,7 +84,7 @@ export default function Post({ params }) {
                     </div>
                   }
                   {!domain.cards[currentCard].imageUrl &&
-                    <div className="font-mono text-black ease-in-out duration-100 pl-3 pr-3 mb-3 overflow-hidden rounded-md bg-gray">
+                    <div className="font-mono text-black ease-in-out duration-100 pl-3 pr-3 mb-3 overflow-hidden rounded-md bg-transparent">
                     < div>&nbsp;</div>
                     </div>
                   }
@@ -114,9 +114,11 @@ export default function Post({ params }) {
             </div>
 
             <div className="flex flex-row gap-5 items-center justify-center m-5">
-              <button className="rounded-2xl bg-btn hover:bg-btn-200 p-3" onClick={(e) => increment(e, 1)}> I KNEW THE ANSWER </button>
+            <button className="rounded-2xl bg-btn hover:bg-btn-200 p-3" onClick={(e) => increment(e, -1)}> PREV </button>
+              <button className="rounded-2xl bg-btn hover:bg-btn-200 p-3"> I KNEW THE ANSWER </button>
               <button className="rounded-2xl bg-btn hover:bg-btn-200 p-3"  onClick={handleFlip}> FLIP </button>
-              <button className="rounded-2xl bg-btn hover:bg-btn-200 p-3" onClick={(e) => increment(e, 1)}> I DIDN'T KNOW THE ANSWER </button>
+              <button className="rounded-2xl bg-btn hover:bg-btn-200 p-3"> I DIDN'T KNOW THE ANSWER </button>
+              <button className="rounded-2xl bg-btn hover:bg-btn-200 p-3" onClick={(e) => increment(e, 1)}> NXT </button>
             </div>
           </div>
         }
