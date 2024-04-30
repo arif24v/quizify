@@ -3,36 +3,39 @@
 import { useState } from "react";
 import ReactDOM from "react-dom/client";
 import Link from "next/link"
-import { getFirestore, collection, addDoc } from 'firebaseLogin/firestore';
-import { doc, getDoc } from "firebaseLogin/firestore";
+import { getFirestore, collection, addDoc } from 'firebase/firestore';
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "./../firebaseLogin.js"
 export default function Page() {
 const logins = collection(db, 'logins');
-const loginData = {
-    user: 'username',
-    pass: 'pass'
-};
-const newDocRef = addDoc(logins, loginData);
-console.log('New document added with ID:', newDocRef.id);
 async function register(u, p){
+    let exist = false;
     //check for duplicate usernames
-    const docRef = doc(db, 'logins', u);
-    const docSnap = await getDoc(docRef);
-    if (docSnap.exists()) { //duplicate
-        return true;
+    logins.forEach((user) => {
+        console.log(user);
+        if(u===user){
+            exist = true;
+        }
+      })
+    if (exist) { //duplicate
+        alert("Username is taken");
     } else{
         const loginData = {
             user: u,
             pass: p
         };
         const newDocRef = await addDoc(logins, loginData);
-        console.log('New document added with ID:', newDocRef.id);
+        console.log('new user');
+        window.history.pushState("http://localhost:3000");
         return false;
     }
 }
 async function signin(u,p){
     const docRef = doc(db, 'logins', u);
     const docSnap = await getDoc(docRef);
-    if (docSnap.exists()&&docSnap.pass===p) { //success
+    if (docSnap.exists()&&docSnap.data.pass===p) { //success
+        console.log("logged in");
+        window.history.pushState("http://localhost:3000");
         return true;
     } else{
         alert("Username or password is incorrect");
@@ -41,12 +44,10 @@ async function signin(u,p){
     const [stateIn, setState] = useState("Log In");
     async function onclick(u,p){
         if(inputUser.value!==""&&inputPass.value!==""){
-            if(state="L"){ //log in
+            if(stateIn==="Log In"){ //log in
                 signin(u,p);
             } else{ //signup
-                if(register(u,p)){
-                    alert("Username is taken!");
-                }
+                register(u,p);
             }
         }
     }
@@ -82,7 +83,7 @@ async function signin(u,p){
                                 <label for="inputPass" class="h4">Password</label>
                                 <input type="text" class="form-control" id="inputPass" placeholder="Password"></input>
                             </div>
-                            <a href="/" class="btn btn-info" role="button">{stateIn}</a>
+                            <a class="btn btn-info" role="button" onClick={() => onclick(inputUser.value, inputPass.value)}>{stateIn}</a>
                         </form>
                     </div>
                 </div>
