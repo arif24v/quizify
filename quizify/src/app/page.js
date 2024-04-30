@@ -5,6 +5,7 @@ import { collection, addDoc, getDoc, query, onSnapshot } from "firebase/firestor
 import React, { useState, useEffect } from 'react'
 import { db } from "./firebase"
 import Link from "next/link"
+import Banner from "./components/banner/banner.js"
 
 import profile from "./../../public/profile.png"
 
@@ -54,6 +55,7 @@ export default function Home() {
 
     return (
         <main>
+            <Banner />
             <div className="text-3xl font-mono text-black m-3"> RANDOM ASSORTMENT </div>
             {chunkArray(selectDomains, 4).map((row, rowIndex) => (
                 <div className="flex flex-row w-full pr-6">
