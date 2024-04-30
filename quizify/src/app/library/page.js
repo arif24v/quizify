@@ -35,7 +35,7 @@ export default function Page() {
 
     return (
         <main>
-            <div className="text-3xl font-mono text-black m-3"> Your Library </div>
+            <div className="text-3xl font-mono text-black m-3"> Library </div>
             {chunkArray(domains, 4).map((row, rowIndex) => (
                 <div className="flex flex-row w-full pr-6">
                     {row.map((domain) => (
