@@ -3,24 +3,55 @@
 import { useState } from "react";
 import ReactDOM from "react-dom/client";
 import Link from "next/link"
-
+import { getFirestore, collection, addDoc } from 'firebase/firestore';
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "./../firebaseLogin.js"
 export default function Page() {
-    let state = "L";
+const logins = collection(db, 'logins');
+async function register(u, p){
+    let exist = false;
+    //check for duplicate usernames
+    logins.forEach((user) => {
+        console.log(user);
+        if(u===user){
+            exist = true;
+        }
+      })
+    if (exist) { //duplicate
+        alert("Username is taken");
+    } else{
+        const loginData = {
+            user: u,
+            pass: p
+        };
+        const newDocRef = await addDoc(logins, loginData);
+        console.log('new user');
+        window.history.pushState("http://localhost:3000");
+        return false;
+    }
+}
+async function signin(u,p){
+    const docRef = doc(db, 'logins', u);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()&&docSnap.data.pass===p) { //success
+        console.log("logged in");
+        window.history.pushState("http://localhost:3000");
+        return true;
+    } else{
+        alert("Username or password is incorrect");
+    }
+}
     const [stateIn, setState] = useState("Log In");
-    async function switchMethod(m){
-        console.log("test");
-        if(!m===state){
-            if(m==="L"){
-                console.log("logging in");
-                state = "L";
-                title.innerText="Log In";
-            } else{
-                console.log("signing up");
-                state = "S";
-                title.innerText="Sign Up";
+    async function onclick(u,p){
+        if(inputUser.value!==""&&inputPass.value!==""){
+            if(stateIn==="Log In"){ //log in
+                signin(u,p);
+            } else{ //signup
+                register(u,p);
             }
         }
     }
+    
     return (
         <main>
             <div>
@@ -41,6 +72,7 @@ export default function Page() {
                         </div>
                         
                         <form className="flex flex-col position-absolute start-[60vw]">
+                        
                             <div class="mx-auto">
                                 <h1 class="display-3 h-[10vw]" id="title">{stateIn}</h1> 
                             </div>
@@ -49,11 +81,11 @@ export default function Page() {
                                 <input type="text" class="form-control" id="inputUser" placeholder="Username"></input>
                             </div>
                             <div class="h-[2vw]"></div>
-                            <div class="form-group">
+                            <div class="form-group h-[7vw]">
                                 <label for="inputPass" class="h4">Password</label>
                                 <input type="text" class="form-control" id="inputPass" placeholder="Password"></input>
                             </div>
-                            <button type="submit" class="btn btn-primary" id="submit">{stateIn}</button>
+                            <a class="btn btn-info" role="button" onClick={() => onclick(inputUser.value, inputPass.value)}>{stateIn}</a>
                         </form>
                     </div>
                 </div>
@@ -61,6 +93,3 @@ export default function Page() {
         </main>
     );
 }
-
-
-
