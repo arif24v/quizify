@@ -25,7 +25,9 @@ module.exports = {
         'btn': {
           DEFAULT: '#DDE5B6',
           100: '#DDE5B6',
-          200: '#ADC178'
+          200: '#ADC178',
+          300: '#b3ef15ff',
+          400: '#f1fac8ff'
         },
         'card': '#eeeeee'
 
