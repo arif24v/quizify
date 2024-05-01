@@ -5,6 +5,7 @@ import { collection, addDoc, getDoc, query, onSnapshot } from "firebase/firestor
 import React, { useState, useEffect } from 'react'
 import { db } from "./firebase"
 import Link from "next/link"
+import Banner from "./components/banner/banner.js"
 
 import profile from "./../../public/profile.png"
 
