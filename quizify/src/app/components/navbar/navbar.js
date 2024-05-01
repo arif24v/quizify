@@ -10,7 +10,7 @@ export default function Home() {
                 <Link className="text-4xl text-brown justify-center" href="/"> QUIZIFY!</Link>
                 <div className="flex flex-row max-md:hidden gap-8">
                     <Link className = "hover:underline text-brown font-mono" href="/create"> Create </Link>
-                    <Link className = "hover:underline whitespace-nowrap text-brown font-mono" href="/library"> Your Library </Link>
+                    <Link className = "hover:underline whitespace-nowrap text-brown font-mono" href="/library"> Library </Link>
                 </div>
                 
                 <div className="flex flex-row w-1/2" data-twe-input-wrapper-init data-twe-input-group-ref>
