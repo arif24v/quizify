@@ -26,6 +26,7 @@ export default function Page() {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [passwordBool, setPasswordBool] = useState(false);
+    const [password, setPassword] = useState("");
     
     const [editing, setEditing] = useState();
     const [editableValue, setEditableValue] = useState([]);
@@ -66,7 +67,8 @@ export default function Page() {
             title: title,
             description: description,
             cards: cardsWithURLs,
-            imageURLs: urls
+            imageURLs: urls,
+            password: password
         });
         console.log("Document added with images:", docRefMeta.id);
     }
@@ -130,7 +132,7 @@ export default function Page() {
                     <div className="flex-1" />
                     <input type="checkbox" onChange={handleChange} className="text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 outline-none dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"></input>
                     {passwordBool && (
-                        <input type="text" className="h-full focus:text-lg ease-in-out duration-200 flex flex-col font-mono w-5/12 mr-16 ml-2 mt-3 mb-3 bg-transparent outline-none border-b-4 border-b-btn-200 pl-1 placeholder-gray-700 text-darkgray" placeholder="Password" />
+                        <input type="text" className="h-full focus:text-lg ease-in-out duration-200 flex flex-col font-mono w-5/12 mr-16 ml-2 mt-3 mb-3 bg-transparent outline-none border-b-4 border-b-btn-200 pl-1 placeholder-gray-700 text-darkgray" onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
                     )}
                     {!passwordBool && (
                         <div className="flex-1" />
@@ -178,7 +180,7 @@ export default function Page() {
                         transition={{ duration: 0.5 }}
                     >
                         <div className="m-3">
-                            <div className = "w-full bg-beige mb-1 rounded-t-md flex flex-row p-3"> 
+                            <div className = "w-full bg-gray mb-1 rounded-t-md flex flex-row p-3"> 
                                 <div className="font-mono text-gray"> {id} </div>
                                 <div className="flex-1" />
                                 {   images[id] && (
