@@ -14,7 +14,7 @@ export default function Home() {
                 </div>
                 
                 <div className="flex flex-row w-1/2" data-twe-input-wrapper-init data-twe-input-group-ref>
-                    <input type="search" className="rounded-sm border-2 w-full h-7 font-mono text-sm outline-none p-2" placeholder="Type Anything"/>
+                    <input type="search" className="rounded-sm border-2 w-full h-7 font-mono text-sm outline-none p-2" placeholder="Search domains..."/>
                     <button
                         className="relative z-[2] -ms-0.5 flex items-center rounded-e bg-silver px-5 text-xs font-medium uppercase leading-normal text-black shadow-primary-3 transition duration-150 ease-in-out hover:bg-btn-200 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
                         type="button"
