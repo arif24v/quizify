@@ -66,16 +66,29 @@ async function signin(u,p){
                     <div>
                         <img class="h-[93vh] w-[50vw]" src="books.jpg" alt="books.jpg" />
                     </div>
-                    <div className="h-[30vh] w-full items-center justify-center flex flex-col align-items">
-                        <div class="pt-20 text-5xl font-mono"> LOG IN </div>
+                        <div className="flex flex-row">
+                        <Link href="" className="mt-20 ml-40 hover:underline text-3xl text-brown font-mono">Sign up</Link>
+                        <Link href="" className="underline mt-20 ml-40 hover:underline text-3xl text-brown font-mono">Log in</Link>
+                        </div>
+                    <div>
+                        <img class="ml-40 h-[25vh] w-[13vw]" src="owl.png" alt="owl.png" />
                     </div>
                     <div>
+                        <div class="ml-40 text-2xl text-brown font-mono">
+                            Username
+                        </div>
+                        <input type="text" className="ml-40 flex flex-row border-brown border-2 rounded-lg text-2xl form-control mt-5 h-14 w-80 p-2" placeholder="Username" />
                     </div>
 
                     <div>
-                        <div class="ml-40 text-3xl text-brown font-mono">
-                            Username:
+                        <div class="ml-40 text-2xl text-brown font-mono">
+                            Password
                         </div>
+                        <input type="text" className="ml-40 flex flex-row border-brown border-2 rounded-lg text-2xl form-control mt-5 h-14 w-80 p-2" placeholder="Password" />
+                    </div>
+                    <div>
+                        <p className="mt-10 text-sm ml-20 text-brown font-mono">By clicking Log in, you accept the Quizify!© <b><u>Terms of Service</u></b> and <b><u>Privacy Policy</u></b></p>
+                        <button className="ml-40 hover:shadow-md hover:bg-btn-200 hover:shadow-btn-200 ease-in-out duration-200 text-2xl ml-5 mt-5 p-2 rounded-lg border-brown bg-btn-100 h-16 w-80 font-mono border-2">Log in </button>
                     </div>
                 </div>
                 }
