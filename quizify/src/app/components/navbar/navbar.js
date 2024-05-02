@@ -5,7 +5,7 @@ import profile from "./../../../../public/profile.png"
 
 export default function Home() {
     return (
-        <main >
+        <main>
             <div className = "bg-btn w-full flex flex-row gap-12 h-16 items-center justify-center p-8 sticky top-0">
                 <Link className="text-4xl text-brown justify-center" href="/"> QUIZIFY!</Link>
                 <div className="flex flex-row max-md:hidden gap-8">
