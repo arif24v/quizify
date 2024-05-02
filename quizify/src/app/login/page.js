@@ -26,7 +26,7 @@ async function register(u, p){
         };
         const newDocRef = await addDoc(logins, loginData);
         console.log('new user');
-        window.history.pushState("http://localhost:3000");
+        location.replace("/");
         return false;
     }
 }
@@ -35,7 +35,7 @@ async function signin(u,p){
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()&&docSnap.data.pass===p) { //success
         console.log("logged in");
-        window.history.pushState("http://localhost:3000");
+        location.replace("/");
         return true;
     } else{
         alert("Username or password is incorrect");
