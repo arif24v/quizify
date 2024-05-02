@@ -34,8 +34,6 @@ export default function Banner() {
         const canvas = canvasRef.current;
         if (canvas) {
 
-
-
             const context = canvas.getContext("2d");
             context.clearRect(0, 0, canvas.width, canvas.height)
             context.lineCap = "round";
@@ -61,13 +59,13 @@ export default function Banner() {
     }
 
     return (
-        <main className={`h-[60vh] md:h-[75vh] min-h-[30rem] bg-btn-100 relative overflow-hidden`}>
+        <main className={`h-[60vh] md:h-[75vh] min-h-[30rem] bg-btn-200 relative overflow-hidden`}>
         <canvas onResize={handleResize} ref={canvasRef} className="relative top-0 left-0"> </canvas>
-        <div className="flex flex-row items-center justify-center z-20 absolute top-0 left-0 w-full h-full p-8 bg-opacity-80 bg-gray md:bg-opacity-100 md:bg-transparent md:bg-gradient-to-bl md:via-90% md:via-stone-500 md:from-transparent md:to-stone-600">
+        <div className="flex flex-row items-center justify-center z-20 absolute top-0 left-0 w-full h-full p-8 bg-opacity-80 bg-gradient-to-r from-btn-500 to-btn-400">
             <div className="flex flex-row items-center w-full max-w-screen-xl">
                 <div className="md:w-2/3 w-full">
-                    <h1 className={`bg-gradient-to-b from-btn-100 to-btn-200 text-transparent bg-clip-text text-8xl md:text-9xl font-extrabold mb-2 mt-2`}>Quizify!</h1>
-                    <p className={`pl-5 mt-3 font-mono text-stone-800 text-md`}> 
+                    <h1 className={`bg-gradient-to-b from-brown to-brown-200 text-transparent bg-clip-text text-8xl md:text-9xl font-extrabold mb-2 mt-2`}>QUIZIFY!</h1>
+                    <p className={`pl-5 mt-3 font-mono text-btn-400 text-md`}> 
                         <span>
                             Learn <Typewriter 
                              words={phrases}
