@@ -37,22 +37,52 @@ export default function Banner() {
             const context = canvas.getContext("2d");
             context.clearRect(0, 0, canvas.width, canvas.height)
             context.lineCap = "round";
-            const radius = canvas.width < 600 ? 200 : 300;
+            const radius = canvas.width < 600 ? 50 : 100;
             context.translate(canvas.width < 600 ? canvas.width : canvas.width * 0.75, canvas.height / 2);
             context.beginPath()            
 
             context.beginPath()
-            context.arc(0, 0, radius * 0.9, -Math.PI / 2, 2 * Math.PI);
+            context.arc(-120, 0, radius * 0.9, -Math.PI / 2, 2 * Math.PI);
             context.lineWidth = 10;
             context.strokeStyle = "btn-200";
             context.stroke();
 
             context.beginPath()
-            context.moveTo(0, 0)
+            context.fillStyle = "#c82124";
+            context.arc(-120, 0, radius * 0.5, -Math.PI / 2, 2 * Math.PI);
+            context.fill()
+            context.lineWidth = 10;
+            context.strokeStyle = "btn-200";
+            context.stroke();
+
+            context.beginPath()
+            context.arc(120, 0, radius * 0.9, -Math.PI / 2, 2 * Math.PI);
+            context.lineWidth = 10;
+            context.strokeStyle = "btn-200";
+            context.stroke();
+
+            context.beginPath()
+            context.fillStyle = "#c82124";
+            context.arc(120, 0, radius * 0.5, -Math.PI / 2, 2 * Math.PI);
+            context.fill()
+            context.lineWidth = 10;
+            context.strokeStyle = "btn-200";
+            context.stroke();
+
+            context.beginPath()
+            context.fillStyle = "#c82124";
+            context.moveTo(0, 50)
             context.strokeStyle = "btn-200";
             context.lineWidth = 10;
-            context.lineTo(Math.cos(Math.PI / 4) * (1.3 * radius), -Math.sin((2 * Math.PI) - (Math.PI/5)) * (radius));
+            context.lineTo(25, 100)
+            context.lineTo(0, 150)
+            context.lineTo(-25, 100)
+            context.lineTo(0, 50)
+            context.fill()
             context.stroke()
+
+            //context.lineTo(Math.cos(Math.PI / 4) * (1.3 * radius), -Math.sin((2 * Math.PI) - (Math.PI/5)) * (radius));
+            //context.stroke()
 
             
         }
