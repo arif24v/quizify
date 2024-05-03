@@ -48,7 +48,7 @@ export default function Banner() {
             context.stroke();
 
             context.beginPath()
-            context.fillStyle = "#c82124";
+            context.fillStyle = "#86530b";
             context.arc(-120, 0, radius * 0.5, -Math.PI / 2, 2 * Math.PI);
             context.fill()
             context.lineWidth = 10;
@@ -62,7 +62,7 @@ export default function Banner() {
             context.stroke();
 
             context.beginPath()
-            context.fillStyle = "#c82124";
+            context.fillStyle = "#86530b";
             context.arc(120, 0, radius * 0.5, -Math.PI / 2, 2 * Math.PI);
             context.fill()
             context.lineWidth = 10;
@@ -70,7 +70,7 @@ export default function Banner() {
             context.stroke();
 
             context.beginPath()
-            context.fillStyle = "#c82124";
+            context.fillStyle = "#86530b";
             context.moveTo(0, 50)
             context.strokeStyle = "btn-200";
             context.lineWidth = 10;
@@ -90,11 +90,12 @@ export default function Banner() {
 
     return (
         <main className={`h-[60vh] md:h-[75vh] min-h-[30rem] bg-btn-200 relative overflow-hidden`}>
-        <canvas onResize={handleResize} ref={canvasRef} className="relative top-0 left-0"> </canvas>
-        <div className="flex flex-row items-center justify-center z-20 absolute top-0 left-0 w-full h-full p-8 bg-opacity-80 bg-gradient-to-r from-btn-500 to-btn-400">
+        
+        <div className="flex flex-row items-center justify-center z-20 absolute top-0 left-0 w-full h-full p-8 bg-opacity-80 bg-gradient-to-b from-btn-100 from-3% via-btn-500 to-beige to-97%">
+        <canvas onResize={handleResize} ref={canvasRef} className="absolute right-0"> </canvas>    
             <div className="flex flex-row items-center w-full max-w-screen-xl">
                 <div className="md:w-2/3 w-full">
-                    <h1 className={`bg-gradient-to-b from-brown to-brown-200 text-transparent bg-clip-text text-8xl md:text-9xl font-extrabold mb-2 mt-2`}>QUIZIFY!</h1>
+                    <h1 className={`bg-gradient-to-b from-browns to-browns-200 text-transparent bg-clip-text text-8xl md:text-9xl font-extrabold mb-2 mt-2`}>QUIZIFY!</h1>
                     <p className={`pl-5 mt-3 font-mono text-btn-400 text-md`}> 
                         <span>
                             Learn <Typewriter 

@@ -20,13 +20,11 @@ module.exports = {
 
         },
         'tan': '#ece7d4',
-        'brown': {
+        'browns': {
           DEFAULT: '#86530b',
           100: '#86530b',
           200: '#A98467',
           300: '#36C584C',
-          400: '#96c178ff',
-          500: '#bce2a1ff'
         },
         'darkgray' : '#595959',
         'bkgs': '#F0EAD2',
@@ -36,7 +34,9 @@ module.exports = {
           100: '#DDE5B6',
           200: '#ADC178',
           300: '#b3ef15ff',
-          400: '#f1fac8ff'
+          400: '#f1fac8ff',
+          500: '#96c178ff',
+          600: '#bce2a1ff'
         },
         'card': '#eeeeee',
 
