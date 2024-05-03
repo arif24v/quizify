@@ -98,41 +98,6 @@ async function signin(u,p){
                     </div>
                 </div>
                 }
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                {/* <div className="flex flex-row">
-                    <div className="flex flex-row">
-                        <img src="books.jpg" className="w-100 h-100" />
-                    </div>
-                    <div>
-
-                            <button className="ml-25 hover:underline text-brown font-mono" type="button" onClick={() => setState("Log In")}>Log In</button>
-                            <button className="ml-25 hover:underline text-brown font-mono" type="button" onClick={() => setState("Sign Up")}>Sign Up</button>
-
-                        <form className="flex flex-col">
-                            <div class="mx-auto">
-                                <h1 class="display-3 h-[10vw]" id="title">{stateIn}</h1>
-                            </div>
-                            <div class="form-row align-items-center">
-                                <label for="inputUser" class="h4">Username</label>
-                                <input type="text" class="form-control" id="inputUser" placeholder="Username"></input>
-                            </div>
-                            <div class="h-[2vw]"></div>
-                            <div class="form-group h-[7vw]">
-                                <label for="inputPass" class="h4">Password</label>
-                                <input type="text" class="form-control" id="inputPass" placeholder="Password"></input>
-                            </div>
-                            <a class="btn btn-info" role="button" onClick={() => onclick(inputUser.value, inputPass.value)}>{stateIn}</a>
-                        </form>
-                    </div>
-                </div> */}
             </div>}
         </main>
     );
