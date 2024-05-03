@@ -192,11 +192,11 @@ export default function Page() {
                                 <button className="font-mono text-black bg-red-500 hover:bg-red-400 ease-in-out duration-100 pl-3 pr-3 rounded-md" onClick={(e) => setDeleting(id)}> DELETE </button>
                             </div>
                             { editing == id ? (
-                                <div className = "flex flex-row w-full font-mono text-brown bg-btn rounded-b-md">
+                                <div className = "flex flex-row w-full font-mono text-browns bg-btn rounded-b-md">
                                     <p className="flex flex-row text-lg ml-5 mt-5 mb-5"> TERM: </p>
-                                    <textarea type="text" style={{ overflowWrap: 'break-word' }} className = "outline-none border-b-4 bg-btn-200 text-brown font-mono flex flex-row text-lg m-5 w-1/2" onChange={(e) => setEditableValue([e.target.value, editableValue[1]])} value={editableValue[0]} />
+                                    <textarea type="text" style={{ overflowWrap: 'break-word' }} className = "outline-none border-b-4 bg-btn-200 text-browns font-mono flex flex-row text-lg m-5 w-1/2" onChange={(e) => setEditableValue([e.target.value, editableValue[1]])} value={editableValue[0]} />
                                     <p className="flex flex-row text-lg ml-5 mt-5 mb-5"> DEF: </p>
-                                    <textarea type="text" style={{ overflowWrap: 'break-word' }} className = "outline-none border-b-4 bg-btn-200 text-brown font-mono flex flex-row text-lg m-5 w-1/2" onChange={(e) => setEditableValue([editableValue[0], e.target.value])} value={editableValue[1]} />
+                                    <textarea type="text" style={{ overflowWrap: 'break-word' }} className = "outline-none border-b-4 bg-btn-200 text-browns font-mono flex flex-row text-lg m-5 w-1/2" onChange={(e) => setEditableValue([editableValue[0], e.target.value])} value={editableValue[1]} />
                                     
                                     <button className = "m-2 rounded-md bg-btn hover:bg-btn-200 ease-in-out duration-100 font-mono text-lg align-center p-2" onClick={() => setReplacing(id)}> 
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" class="w-12 h-6">
