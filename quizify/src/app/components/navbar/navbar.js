@@ -7,10 +7,10 @@ export default function Home() {
     return (
         <main>
             <div className = "bg-btn w-full flex flex-row gap-12 h-16 items-center justify-center p-8 sticky top-0">
-                <Link className="text-4xl text-brown justify-center" href="/"> QUIZIFY!</Link>
+                <Link className="text-4xl text-browns justify-center" href="/"> QUIZIFY!</Link>
                 <div className="flex flex-row max-md:hidden gap-8">
-                    <Link className = "hover:underline text-brown font-mono" href="/create"> Create </Link>
-                    <Link className = "hover:underline whitespace-nowrap text-brown font-mono" href="/library"> Library </Link>
+                    <Link className = "hover:underline text-browns font-mono" href="/create"> Create </Link>
+                    <Link className = "hover:underline whitespace-nowrap text-browns font-mono" href="/library"> Library </Link>
                 </div>
                 
                 <div className="flex flex-row w-1/2" data-twe-input-wrapper-init data-twe-input-group-ref>
@@ -32,7 +32,7 @@ export default function Home() {
                     </button>
                 </div>
                 <div className="flex-1" />
-                <Link className = "hover:underline text-brown font-mono whitespace-nowrap" href="/login">Sign In/Register</Link>
+                <Link className = "hover:underline text-browns font-mono whitespace-nowrap" href="/login">Sign In/Register</Link>
                 <div>
                     <button className="block md:hidden">
                         <svg className = "w-5 h-5" xlmns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
