@@ -62,31 +62,37 @@ async function signin(u,p){
                     
                 <div class="gap-4 columns-2">
                     <div>
-                        <img class="h-[93vh] w-[50vw]" src="books.jpg" alt="books.jpg" />
+                        <img class="h-[93vh] w-[50vw]" src="yah.png" alt="yah.png" />
                     </div>
-                        <div className="flex flex-row">
-                        <Link href="" className="mt-20 ml-40 hover:underline text-3xl text-brown font-mono">Sign up</Link>
-                        <Link href="" className="underline mt-20 ml-40 hover:underline text-3xl text-brown font-mono">Log in</Link>
+                        <div className="flex flex-row items-center">
+                        <Link href="" className="mt-20 mx-52 hover:underline text-3xl text-brown font-mono">Sign up</Link>
+                        <Link href="" className="underline mt-20 -mx-10 hover:underline text-3xl text-brown font-mono">Log in</Link>
                         </div>
                     <div>
-                        <img class="ml-40 h-[25vh] w-[13vw]" src="owl.png" alt="owl.png" />
+                        <img class="mt-5 mx-auto h-[25vh] w-[13vw]" src="owl.png" alt="owl.png" />
                     </div>
                     <div>
-                        <div class="ml-40 text-2xl text-brown font-mono">
-                            Username
+                        <div className="flex flex-column">
+                            <div class="ml-40 text-2xl text-brown font-mono">
+                                Username
+                            </div>
+                            
                         </div>
-                        <input type="text" className="ml-40 flex flex-row border-brown border-2 rounded-lg text-2xl form-control mt-5 h-14 w-80 p-2" placeholder="Username" />
                     </div>
 
                     <div>
-                        <div class="ml-40 text-2xl text-brown font-mono">
+                        <input type="text" className="mx-auto flex flex-row border-brown border-2 rounded-lg text-xl form-control h-14 w-[31vw] p-2" placeholder="Username" />
+                    </div>
+
+                    <div>
+                        <div class="mt-5 ml-40 text-2xl text-brown font-mono">
                             Password
                         </div>
-                        <input type="text" className="ml-40 flex flex-row border-brown border-2 rounded-lg text-2xl form-control mt-5 h-14 w-80 p-2" placeholder="Password" />
+                        <input type="text" className="mx-auto flex flex-row border-brown border-2 rounded-lg text-xl form-control h-14 w-[31vw] p-2" placeholder="Password" />
                     </div>
-                    <div>
-                        <p className="mt-10 text-sm ml-20 text-brown font-mono">By clicking Log in, you accept the Quizify!© <b><u>Terms of Service</u></b> and <b><u>Privacy Policy</u></b></p>
-                        <button className="ml-40 hover:shadow-md hover:bg-btn-200 hover:shadow-btn-200 ease-in-out duration-200 text-2xl ml-5 mt-5 p-2 rounded-lg border-brown bg-btn-100 h-16 w-80 font-mono border-2">Log in </button>
+                    <div class="flex flex-col items-center">
+                        <p className="mt-7 ml-30 text-md text-brown font-Arial">By clicking Log in, you accept the Quizify!© <b><u>Terms of Service</u></b> and <b><u>Privacy Policy</u></b></p>
+                        <button className="justify-center hover:shadow-md hover:bg-btn-200 hover:shadow-btn-200 ease-in-out duration-200 text-2xl my-10 p-2 rounded-lg bg-btn-100 h-14 w-[31vw] font-mono text-brown">Log in </button>
                     </div>
                 </div>
             </main>
