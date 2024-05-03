@@ -34,40 +34,68 @@ export default function Banner() {
         const canvas = canvasRef.current;
         if (canvas) {
 
-
-
             const context = canvas.getContext("2d");
             context.clearRect(0, 0, canvas.width, canvas.height)
             context.lineCap = "round";
-            const radius = canvas.width < 600 ? 200 : 300;
+            const radius = canvas.width < 600 ? 50 : 100;
             context.translate(canvas.width < 600 ? canvas.width : canvas.width * 0.75, canvas.height / 2);
             context.beginPath()            
 
             context.beginPath()
-            context.arc(0, 0, radius * 0.9, -Math.PI / 2, 2 * Math.PI);
+            context.arc(-120, 0, radius * 0.9, -Math.PI / 2, 2 * Math.PI);
             context.lineWidth = 10;
             context.strokeStyle = "btn-200";
             context.stroke();
 
             context.beginPath()
-            context.moveTo(0, 0)
+            context.fillStyle = "#c82124";
+            context.arc(-120, 0, radius * 0.5, -Math.PI / 2, 2 * Math.PI);
+            context.fill()
+            context.lineWidth = 10;
+            context.strokeStyle = "btn-200";
+            context.stroke();
+
+            context.beginPath()
+            context.arc(120, 0, radius * 0.9, -Math.PI / 2, 2 * Math.PI);
+            context.lineWidth = 10;
+            context.strokeStyle = "btn-200";
+            context.stroke();
+
+            context.beginPath()
+            context.fillStyle = "#c82124";
+            context.arc(120, 0, radius * 0.5, -Math.PI / 2, 2 * Math.PI);
+            context.fill()
+            context.lineWidth = 10;
+            context.strokeStyle = "btn-200";
+            context.stroke();
+
+            context.beginPath()
+            context.fillStyle = "#c82124";
+            context.moveTo(0, 50)
             context.strokeStyle = "btn-200";
             context.lineWidth = 10;
-            context.lineTo(Math.cos(Math.PI / 4) * (1.3 * radius), -Math.sin((2 * Math.PI) - (Math.PI/5)) * (radius));
+            context.lineTo(25, 100)
+            context.lineTo(0, 150)
+            context.lineTo(-25, 100)
+            context.lineTo(0, 50)
+            context.fill()
             context.stroke()
+
+            //context.lineTo(Math.cos(Math.PI / 4) * (1.3 * radius), -Math.sin((2 * Math.PI) - (Math.PI/5)) * (radius));
+            //context.stroke()
 
             
         }
     }
 
     return (
-        <main className={`h-[60vh] md:h-[75vh] min-h-[30rem] bg-btn-100 relative overflow-hidden`}>
+        <main className={`h-[60vh] md:h-[75vh] min-h-[30rem] bg-btn-200 relative overflow-hidden`}>
         <canvas onResize={handleResize} ref={canvasRef} className="relative top-0 left-0"> </canvas>
-        <div className="flex flex-row items-center justify-center z-20 absolute top-0 left-0 w-full h-full p-8 bg-opacity-80 bg-gray md:bg-opacity-100 md:bg-transparent md:bg-gradient-to-bl md:via-90% md:via-stone-500 md:from-transparent md:to-stone-600">
+        <div className="flex flex-row items-center justify-center z-20 absolute top-0 left-0 w-full h-full p-8 bg-opacity-80 bg-gradient-to-r from-btn-500 to-btn-400">
             <div className="flex flex-row items-center w-full max-w-screen-xl">
                 <div className="md:w-2/3 w-full">
-                    <h1 className={`bg-gradient-to-b from-btn-100 to-btn-200 text-transparent bg-clip-text text-8xl md:text-9xl font-extrabold mb-2 mt-2`}>Quizify!</h1>
-                    <p className={`pl-5 mt-3 font-mono text-stone-800 text-md`}> 
+                    <h1 className={`bg-gradient-to-b from-brown to-brown-200 text-transparent bg-clip-text text-8xl md:text-9xl font-extrabold mb-2 mt-2`}>QUIZIFY!</h1>
+                    <p className={`pl-5 mt-3 font-mono text-btn-400 text-md`}> 
                         <span>
                             Learn <Typewriter 
                              words={phrases}
