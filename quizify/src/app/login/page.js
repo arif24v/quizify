@@ -64,7 +64,7 @@ async function signin(u,p){
                     
                 <div class="gap-4 columns-2">
                     <div>
-                        <img class="h-[93vh] w-[50vw]" src="yah.png" alt="yah.png" />
+                        <img class="h-[93vh] w-[50vw]" src="img.png" alt="img.png" />
                     </div>
                         <div className="flex flex-row">
                         <Link href="" className="mt-20 mx-52 hover:underline text-3xl text-browns font-mono">Sign up</Link>
