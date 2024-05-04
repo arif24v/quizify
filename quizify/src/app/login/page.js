@@ -83,18 +83,18 @@ async function signin(u,p){
                     </div>
 
                     <div>
-                        <input type="text" className="mx-auto flex flex-row border-browns border-2 rounded-lg text-2xl form-control h-15 w-[30vw] p-2" placeholder="Username" />
+                        <input type="text" className="ml-40 flex flex-row border-browns border-2 rounded-lg text-2xl form-control h-15 w-[30vw] p-2" placeholder="Username" />
                     </div>
 
                     <div>
                         <div class="mt-5 ml-40 text-xl text-browns font-mono">
                             Password
                         </div>
-                        <input type="text" className="mx-auto flex flex-row border-browns border-2 rounded-lg text-2xl form-control h-15 w-[30vw] p-2" placeholder="Password" />
+                        <input type="text" className="ml-40 flex flex-row border-browns border-2 rounded-lg text-2xl form-control h-15 w-[30vw] p-2" placeholder="Password" />
                     </div>
                     <div>
-                        <p className="mt-7 ml-40 text-sm text-browns font-Arial">By clicking Log in, you accept the Quizify!© <b><u>Terms of Service</u></b> and <b><u>Privacy Policy</u></b></p>
-                        <button className="mt-10 ml-40 hover:shadow-md hover:bg-btn-200 hover:shadow-btn-200 ease-in-out duration-200 text-2xl mt-5 p-2 rounded-lg border-browns bg-btn-100 h-15 w-[30vw] font-mono border-2">Log in </button>
+                        <p className="mt-8 ml-32 text-md text-browns font-Arial">By clicking Log in, you accept the Quizify!© <b><u>Terms of Service</u></b> and <b><u>Privacy Policy</u></b></p>
+                        <button className="mt-14 ml-40 hover:shadow-md hover:bg-btn-200 hover:shadow-btn-200 ease-in-out duration-200 text-2xl mt-5 p-2 rounded-lg border-browns bg-btn-100 h-15 w-[30vw] font-mono">Log in </button>
                     </div>
                 </div>
                 }
