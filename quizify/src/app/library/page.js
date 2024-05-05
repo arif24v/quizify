@@ -39,7 +39,7 @@ export default function Page() {
             {chunkArray(domains, 4).map((row, rowIndex) => (
                 <div className="flex flex-row w-full pr-6">
                     {row.map((domain) => (
-                        <div className="w-1/4 p-4">
+                        <div key={domain.id} className="w-1/4 p-4">
                             <Domain title={domain.title} description={domain.description} author={domain.id} password={domain.password} />
                         </div>
                     ))}

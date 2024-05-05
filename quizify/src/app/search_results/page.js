@@ -15,13 +15,17 @@ export default function SearchResults() {
     let [allDomains, setAllDomains] = useState([]);
     let [matchingDomains, setMatchingDomains] = useState([]);
 
+    var id = 0;
+
     function searchByTerm() {
-        allDomains.map((domain) => {
-            const termsArr = searchParams.get("searchTerm").split();
+        setMatchingDomains([]);
+        allDomains.forEach((domain) => {
+            const termsArr = searchParams.get("searchTerm").split(" ");
             let isIncluded = false;
-            termsArr.map((str) => {
+            termsArr.forEach((str) => {
                 if (!isIncluded && domain.title.includes(str)) {
-                    setMatchingDomains([...matchingDomains, domain]);
+                    console.log("here");
+                    setMatchingDomains(prevMatchingDomains => [...prevMatchingDomains, domain]);
                     isIncluded = true;
                 }
             })
@@ -37,15 +41,18 @@ export default function SearchResults() {
             let domainsArr = [];
 
             querySnapshot.forEach((doc) => {
+                console.log(doc.id);
                 domainsArr.push({...doc.data(), id: doc.id})
             })
-            setAllDomains(domainsArr);
+            setAllDomains([...domainsArr]);
         })
-
-        searchByTerm();
 
         return unsubscribe
     }, [])
+
+    useEffect(() => {
+        searchByTerm();
+    }, [allDomains, searchParams])
 
     const chunkArray = (array, size) => {
         if (!array) return [];
@@ -65,7 +72,7 @@ export default function SearchResults() {
             {chunkArray(matchingDomains, 4).map((row, rowIndex) => (
                 <div className="flex flex-row w-full pr-6">
                     {row.map((domain) => (
-                        <div className="w-1/4 p-4">
+                        <div key={domain.id} className="w-1/4 p-4">
                             <Domain title={domain.title} description={domain.description} author={domain.id} password={domain.password} />
                         </div>
                     ))}
