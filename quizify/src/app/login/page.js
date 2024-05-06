@@ -1,33 +1,32 @@
 "use client"
-
+import app from './../firebaseLogin.js';
 import { useState } from "react";
 import ReactDOM from "react-dom/client";
 import Link from "next/link"
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
-import { doc, getDoc } from "firebase/firestore";
+import { doc, setDoc, getDocs, getDoc} from "firebase/firestore";
 import { db } from "./../firebaseLogin.js"
 export default function Page() {
-const logins = collection(db, 'logins');
 async function register(u, p){
     let exist = false;
     //check for duplicate usernames
-    logins.forEach((user) => {
-        console.log(user);
-        if(u===user){
-            exist = true;
-        }
-      })
+    collection("logins").get().then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+            // doc.data() is never undefined for query doc snapshots
+            if(doc.user===u){
+                exist = true;
+            }
+        });
+    });
     if (exist) { //duplicate
         alert("Username is taken");
     } else{
-        const loginData = {
+        await addDoc(doc(db, 'logins', u), {
             user: u,
-            pass: p
-        };
-        const newDocRef = await addDoc(logins, loginData);
+            pass: p,
+          });
         console.log('new user');
         window.history.pushState("http://localhost:3000");
-        return false;
     }
 }
 async function signin(u,p){
@@ -36,27 +35,18 @@ async function signin(u,p){
     if (docSnap.exists()&&docSnap.data.pass===p) { //success
         console.log("logged in");
         window.history.pushState("http://localhost:3000");
-        return true;
     } else{
         alert("Username or password is incorrect");
     }
 }
     const [stateIn, setState] = useState("Log In");
-    async function switchMethod(m) {
-        console.log("test");
-        if (!m === state) {
-            if (m === "L") {
-                console.log("logging in");
-                state = "L";
-                title.innerText = "Log In";
-            } else {
-                console.log("signing up");
-                state = "S";
-                title.innerText = "Sign Up";
-            }
+    async function click(u,p){
+        if(stateIn==="Log In"){
+            signin(u,p);
+        } else{
+            register(u,p);
         }
     }
-    
     return (
         <main>
             {<div>
@@ -67,8 +57,8 @@ async function signin(u,p){
                         <img class="h-[93vh] w-[50vw]" src="img.png" alt="img.png" />
                     </div>
                         <div className="flex flex-row">
-                        <Link href="" className="mt-20 mx-52 hover:underline text-3xl text-browns font-mono">Sign up</Link>
-                        <Link href="" className="underline mt-20 -mx-10 hover:underline text-3xl text-browns font-mono">Log in</Link>
+                        <Link href="" onClick={() => setState("Sign Up")} className="mt-20 mx-52 hover:underline text-3xl text-browns font-mono">Sign up</Link>
+                        <Link href="" onClick={() => setState("Log In")} className="underline mt-20 -mx-10 hover:underline text-3xl text-browns font-mono">Log in</Link>
                         </div>
                     <div>
                         <img class="mt-5 mx-auto h-[25vh] w-[13vw]" src="owl.png" alt="owl.png" />
@@ -83,18 +73,18 @@ async function signin(u,p){
                     </div>
 
                     <div>
-                        <input type="text" className="ml-40 flex flex-row border-browns border-2 rounded-lg text-2xl form-control h-15 w-[30vw] p-2" placeholder="Username" />
+                        <input id="user" type="text" className="ml-40 flex flex-row border-browns border-2 rounded-lg text-2xl form-control h-15 w-[30vw] p-2" placeholder="Username" />
                     </div>
 
                     <div>
                         <div class="mt-5 ml-40 text-xl text-browns font-mono">
                             Password
                         </div>
-                        <input type="text" className="ml-40 flex flex-row border-browns border-2 rounded-lg text-2xl form-control h-15 w-[30vw] p-2" placeholder="Password" />
+                        <input id = "pass" type="text" className="ml-40 flex flex-row border-browns border-2 rounded-lg text-2xl form-control h-15 w-[30vw] p-2" placeholder="Password" />
                     </div>
                     <div>
                         <p className="mt-8 ml-32 text-md text-browns font-Arial">By clicking Log in, you accept the Quizify!© <b><u>Terms of Service</u></b> and <b><u>Privacy Policy</u></b></p>
-                        <button className="mt-14 ml-40 hover:shadow-md hover:bg-btn-200 hover:shadow-btn-200 ease-in-out duration-200 text-2xl mt-5 p-2 rounded-lg border-browns bg-btn-100 h-15 w-[30vw] font-mono">Log in </button>
+                        <button className="mt-14 ml-40 hover:shadow-md hover:bg-btn-200 hover:shadow-btn-200 ease-in-out duration-200 text-2xl mt-5 p-2 rounded-lg border-browns bg-btn-100 h-15 w-[30vw] font-mono" onClick={() => click(user.value, pass.value)}>{stateIn}</button>
                     </div>
                 </div>
                 }
