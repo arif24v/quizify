@@ -10,7 +10,7 @@ import { collection, addDoc, getDoc, query, onSnapshot } from "firebase/firestor
 import React, { useState, useEffect } from 'react'
 import { db, imagedb } from "../firebase"
 import { getDownloadURL, ref, listAll, uploadBytes } from "firebase/storage"
-
+import { v4 } from "uuid"
 import { AnimatePresence, motion } from "framer-motion"
 import { Link } from "next/link"
 import { useRouter } from 'next/navigation';
@@ -52,7 +52,7 @@ export default function Page() {
                     }
                 }));
                 await addFields(urls);
-                router.push("/");
+                
             }
         }
     }
@@ -71,6 +71,7 @@ export default function Page() {
             password: password
         });
         console.log("Document added with images:", docRefMeta.id);
+        router.push("/sets?id="+docRefMeta.id);
     }
 
     function deleteCard(e, index) {

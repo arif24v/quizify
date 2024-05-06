@@ -56,6 +56,7 @@ async function signin(u,p){
     async function click(u,p){
         if(stateIn==="Log In"){
             signin(u,p);
+ 
         } else{
             register(u,p);
         }
