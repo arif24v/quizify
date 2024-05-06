@@ -57,7 +57,7 @@ export default function Home() {
 
         <main>
             <Banner />
-            <div className="mx-auto ml-3 mt-3 mr-3 pl-6 pr-6">
+            <div className="mx-auto ml-2 mt-3 mr-2 pl-5 pr-5">
             {chunkArray(selectDomains, 4).map((row, rowIndex) => (
                 <div className="flex flex-row w-full pr-6">
                     {row.map((domain) => (
