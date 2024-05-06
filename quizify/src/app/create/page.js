@@ -52,7 +52,7 @@ export default function Page() {
                     }
                 }));
                 await addFields(urls);
-                router.push("/");
+                
             }
         }
     }
@@ -71,6 +71,7 @@ export default function Page() {
             password: password
         });
         console.log("Document added with images:", docRefMeta.id);
+        router.push("/sets?id="+docRefMeta.id);
     }
 
     function deleteCard(e, index) {

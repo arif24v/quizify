@@ -23,7 +23,7 @@ export default function SearchResults() {
             const termsArr = searchParams.get("searchTerm").split(" ");
             let isIncluded = false;
             termsArr.forEach((str) => {
-                if (!isIncluded && domain.title.includes(str)) {
+                if (!isIncluded && domain.title.toLowerCase().includes(str.toLowerCase())) {
                     console.log("here");
                     setMatchingDomains(prevMatchingDomains => [...prevMatchingDomains, domain]);
                     isIncluded = true;
