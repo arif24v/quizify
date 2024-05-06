@@ -43,6 +43,7 @@ async function signin(u,p){
     async function click(u,p){
         if(stateIn==="Log In"){
             signin(u,p);
+ 
         } else{
             register(u,p);
         }
@@ -57,8 +58,8 @@ async function signin(u,p){
                         <img class="h-[93vh] w-[50vw]" src="img.png" alt="img.png" />
                     </div>
                         <div className="flex flex-row">
-                        <Link href="" onClick={() => setState("Sign Up")} className="mt-20 mx-52 hover:underline text-3xl text-browns font-mono">Sign up</Link>
-                        <Link href="" onClick={() => setState("Log In")} className="underline mt-20 -mx-10 hover:underline text-3xl text-browns font-mono">Log in</Link>
+                        <Link href="" onClick={() => setState("Sign Up")} className= "mt-20 mx-52 hover:underline text-3xl text-browns font-mono">Sign up</Link>
+                        <Link href="" onClick={() => setState("Log In")} id="login" className="mt-20 -mx-10 hover:underline text-3xl text-browns font-mono">Log in</Link>
                         </div>
                     <div>
                         <img class="mt-5 mx-auto h-[25vh] w-[13vw]" src="owl.png" alt="owl.png" />
