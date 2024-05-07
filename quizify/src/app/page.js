@@ -57,7 +57,7 @@ export default function Home() {
 
         <main>
             <Banner />
-            <div className="text-3xl font-mono text-black m-3"> RECENT </div>
+            <div className="mx-auto ml-2 mt-3 mr-2 pl-5 pr-5">
             {chunkArray(selectDomains, 4).map((row, rowIndex) => (
                 <div className="flex flex-row w-full pr-6">
                     {row.map((domain) => (
@@ -67,16 +67,17 @@ export default function Home() {
                     ))}
                 </div>
             ))}
+            </div>
             <div className="justify-end text-right flex flex-row font-mono text-black mr-8"> 
                 <Link className="hover:underline" href="/library"> Browse More </Link>&nbsp; 
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="flex justify-end w-6 h-6">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="flex justify-end w-6 h-6 mr-9">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
                 </svg>
 
             </div>
 
             <div class="container px-6 py-10 mx-auto">
-                <h1 class="text-3xl font-mono text-black m-3"> Explore our Awesome <span class="underline decoration-btn-200">Features</span>!</h1>
+                <h1 class="text-3xl font-mono text-black"> Explore our Awesome <span class="underline decoration-btn-200">Features</span>!</h1>
                 
                 <p class="mt-4 text-gray-500 xl:mt-6 dark:text-gray-300">
                     Quizify is the answer to all your study needs. Use great study sets to whisk those test worries away!

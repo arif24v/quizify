@@ -17,7 +17,7 @@ export default function Page() {
                     <img class="border-btn-200 border-4 ml-40 h-30 w-30 rounded-full" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="profile.jpg" />
                 </div>
                 <div>
-                    <p class="text-3xl text-brown font-mono">
+                    <p class="text-3xl text-browns font-mono">
                         Username:
                     </p>
                 </div>
@@ -32,7 +32,7 @@ export default function Page() {
 
                 </div>
                 <div>
-                    <p class="mt-12 text-3xl text-brown font-mono">
+                    <p class="mt-12 text-3xl text-browns font-mono">
                         Password:
                     </p>
                 </div>
