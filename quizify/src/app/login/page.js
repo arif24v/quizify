@@ -32,15 +32,19 @@ async function register(u, p){
 }
 async function signin(u,p){
     const querySnapshot = await getDocs(collection(db, 'logins'));
+    let logged = false;
     querySnapshot.forEach((doc) => {
         // doc.data() is never undefined for query doc snapshots
         if(doc.data().user===u&&doc.data().pass===p){
             console.log("logged in");
-            document.location.href = "http://localhost:3000";
-        } else{
-            alert("Username or password is incorrect");
+            logged = true;
         }
     });
+    if(!logged){
+        alert("Username or password is incorrect");
+    } else{
+        document.location.href = "http://localhost:3000";
+    }
 }
     function setState(s){
         stateIn = s;
