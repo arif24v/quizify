@@ -142,8 +142,9 @@ export default function Home() {
         </div>
     </div>
             
-            
-            
+        <div className="h-20 bg-gray flex items-center justify-center">
+            <p className="text-xl text-center bg-gray mt-15 font-Arial">Powered by 2024 ©Testerra Inc.</p>
+        </div>
         </main>
     );
 }
