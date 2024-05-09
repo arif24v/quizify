@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import { db } from "./../firebase"
-import { collection, addDoc, getDoc, query, onSnapshot } from "firebase/firestore" 
+import { collection, addDoc, getDoc, query, onSnapshot } from "firebase/firestore"
 import Domain from "./../components/domains/domain.js";
 
 
@@ -20,13 +20,13 @@ export default function Page() {
     };
 
     useEffect(() => {
-        
+
         const q = query(collection(db, 'domains'))
-        const unsubscribe = onSnapshot(q, (querySnapshot) =>  {
+        const unsubscribe = onSnapshot(q, (querySnapshot) => {
             let domainsArr = [];
 
             querySnapshot.forEach((doc) => {
-                domainsArr.push({...doc.data(), id: doc.id})
+                domainsArr.push({ ...doc.data(), id: doc.id })
             })
             setDomains(domainsArr);
         })
@@ -45,6 +45,36 @@ export default function Page() {
                     ))}
                 </div>
             ))}
+
+            <footer class="mt-10 bg-gray flex flex-col space-y-10 justify-center">
+
+                <nav class="mt-5 flex justify-center flex-wrap gap-6 text-gray-500 font-medium">
+                    <a class="hover:underline" href="/">Home</a>
+                    <a class="hover:underline" href="/create">Create</a>
+                    <a class="hover:underline" href="/library">Library</a>
+                    <a class="hover:underline" href="/login">Login</a>
+                    <a class="hover:underline" href="/profile">Profile</a>
+                </nav>
+
+                <div class="flex justify-center space-x-5">
+                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+                        <img src="https://img.icons8.com/fluent/30/000000/facebook-new.png" />
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                        <img src="https://img.icons8.com/fluent/30/000000/linkedin-2.png" />
+                    </a>
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                        <img src="https://img.icons8.com/fluent/30/000000/instagram-new.png" />
+                    </a>
+                    <a href="https://messenger.com" target="_blank" rel="noopener noreferrer">
+                        <img src="https://img.icons8.com/fluent/30/000000/facebook-messenger--v2.png" />
+                    </a>
+                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+                        <img src="https://img.icons8.com/fluent/30/000000/twitter.png" />
+                    </a>
+                </div>
+                <p class="text-center text-gray-700 font-medium">&copy; 2024 Testerra Inc. All rights reservered.</p>
+            </footer>
         </main>
     );
 }
