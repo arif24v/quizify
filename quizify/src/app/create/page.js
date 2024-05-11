@@ -6,16 +6,53 @@
 
 "use client"
 
-import { collection, addDoc, getDoc, query, onSnapshot } from "firebase/firestore" 
+import { collection, addDoc, getDoc, doc, deleteDoc, query, onSnapshot } from "firebase/firestore" 
 import React, { useState, useEffect } from 'react'
 import { db, imagedb } from "../firebase"
 import { getDownloadURL, ref, listAll, uploadBytes } from "firebase/storage"
 import { v4 } from "uuid"
 import { AnimatePresence, motion } from "framer-motion"
-import { Link } from "next/link"
-import { useRouter } from 'next/navigation';
+import Link from "next/link"
+import { useRouter, useSearchParams } from 'next/navigation';
 
 export default function Page() {
+
+    const searchParams = useSearchParams();
+    const searchId = searchParams.get('id');
+
+
+    let [domain, setDomain] = useState();
+
+    useEffect(() => {
+        console.log("here");
+        console.log(searchId);
+        if (searchId != null) {
+            fetchDomain();
+        }
+    }, [searchId]);
+    
+    useEffect(() => {
+        console.log("here");
+        console.log(searchId);
+        if (domain != null) {
+            setCards([...domain.cards]);
+            if (domain.password == null) {
+                setPassword("");
+            } else {
+                setPassword(domain.password);
+            }
+            setTitle(domain.title);
+            setDescription(domain.description);
+            setImages([...domain.imageURLs]);
+            
+        }
+    }, [domain]);
+
+    async function fetchDomain() {
+        const domainDoc = await getDoc(doc(db, "domains/" + searchId))
+        setDomain(domainDoc.data());
+        await deleteDoc(doc(db, "domains/" + searchId));
+      }
 
     const router = useRouter();
 
@@ -68,7 +105,7 @@ export default function Page() {
             description: description,
             cards: cardsWithURLs,
             imageURLs: urls,
-            password: password
+            password: password 
         });
         console.log("Document added with images:", docRefMeta.id);
         router.push("/sets?id="+docRefMeta.id);
@@ -127,13 +164,13 @@ export default function Page() {
     return (
         <main>
             <div className="flex flex-col bg-beige p-3 m-3 rounded-md">
-                <input type="text" className="h-full focus:text-lg ease-in-out duration-200 flex flex-col font-mono w-5/12 m-3 bg-transparent outline-none border-b-4 border-b-btn-200 pl-1 placeholder-gray-700 text-darkgray" onChange={(e) => setTitle(e.target.value)} placeholder="Enter Title" />
+                <input type="text" className="h-full focus:text-lg ease-in-out duration-200 flex flex-col font-mono w-5/12 m-3 bg-transparent outline-none border-b-4 border-b-btn-200 pl-1 placeholder-gray-700 text-darkgray" onChange={(e) => setTitle(e.target.value)} placeholder="Enter Title" value={title}/>
                 <div className="flex flex-row w-full">
-                    <input type="text" className="h-full focus:text-lg ease-in-out duration-200 flex flex-col font-mono w-5/12 m-3 bg-transparent outline-none border-b-4 border-b-btn-200 pl-1 placeholder-gray-700 text-darkgray" onChange={(e) => setDescription(e.target.value)} placeholder="Enter Description" />
+                    <input type="text" className="h-full focus:text-lg ease-in-out duration-200 flex flex-col font-mono w-5/12 m-3 bg-transparent outline-none border-b-4 border-b-btn-200 pl-1 placeholder-gray-700 text-darkgray" onChange={(e) => setDescription(e.target.value)} placeholder="Enter Description" value={description}/>
                     <div className="flex-1" />
                     <input type="checkbox" onChange={handleChange} className="text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 outline-none dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"></input>
                     {passwordBool && (
-                        <input type="text" className="h-full focus:text-lg ease-in-out duration-200 flex flex-col font-mono w-5/12 mr-16 ml-2 mt-3 mb-3 bg-transparent outline-none border-b-4 border-b-btn-200 pl-1 placeholder-gray-700 text-darkgray" onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
+                        <input type="text" className="h-full focus:text-lg ease-in-out duration-200 flex flex-col font-mono w-5/12 mr-16 ml-2 mt-3 mb-3 bg-transparent outline-none border-b-4 border-b-btn-200 pl-1 placeholder-gray-700 text-darkgray" onChange={(e) => setPassword(e.target.value)} placeholder="Password" value={password}/>
                     )}
                     {!passwordBool && (
                         <div className="flex-1" />
@@ -173,33 +210,34 @@ export default function Page() {
                 </div>
             </div>
             {cards.map((card, id) => (
-                <AnimatePresence>
+                <AnimatePresence key={id}>
                     <motion.div
                         initial={{ y: -100, height: 0, opacity: 0 }}
                         animate={{ y: 0, height: 'auto', opacity: 1 }}
                         exit={{ y: -100, height: 0, opacity: 0 }}
                         transition={{ duration: 0.5 }}
                     >
-                        <div className="m-3">
+                        <div  className="m-3">
                             <div className = "w-full bg-gray mb-1 rounded-t-md flex flex-row p-3"> 
                                 <div className="font-mono text-gray"> {id} </div>
                                 <div className="flex-1" />
                                 {   images[id] && (
+                                    
                                     <div className="font-mono text-black bg-cyan-300 ease-in-out duration-100 pl-3 pr-3 mr-4 max-w-32 overflow-hidden rounded-md">
-                                        <div className="font-mono text-black bg-cyan-300 ease-in-out duration-100 overflow-hidden rounded-md text-nowrap"> {images[id].name} </div>
+                                        <div className="font-mono text-black bg-cyan-300 ease-in-out duration-100 overflow-hidden rounded-md text-nowrap"> {images[id].name == null ? "image" : image[id].name} </div>
                                     </div>
                                 )}
                                 <button className="font-mono text-black bg-white hover:bg-gray-300 ease-in-out duration-100 pl-3 pr-3 mr-4 rounded-md" onClick={(e) => editCard(e, id)}> {editing == id ? "DONE EDITING" : "EDIT"} </button>
                                 <button className="font-mono text-black bg-red-500 hover:bg-red-400 ease-in-out duration-100 pl-3 pr-3 rounded-md" onClick={(e) => setDeleting(id)}> DELETE </button>
                             </div>
                             { editing == id ? (
-                                <div className = "flex flex-row w-full font-mono text-browns bg-btn rounded-b-md">
+                                <div className = "flex flex-row w-full font-mono text-browns bg-gray rounded-b-md">
                                     <p className="flex flex-row text-lg ml-5 mt-5 mb-5"> TERM: </p>
-                                    <textarea type="text" style={{ overflowWrap: 'break-word' }} className = "outline-none border-b-4 bg-btn-200 text-browns font-mono flex flex-row text-lg m-5 w-1/2" onChange={(e) => setEditableValue([e.target.value, editableValue[1]])} value={editableValue[0]} />
+                                    <textarea type="text" style={{ overflowWrap: 'break-word' }} className = "outline-none border-b-4 bg-gray text-browns font-mono flex flex-row text-lg m-5 w-1/2" onChange={(e) => setEditableValue([e.target.value, editableValue[1]])} value={editableValue[0]} />
                                     <p className="flex flex-row text-lg ml-5 mt-5 mb-5"> DEF: </p>
-                                    <textarea type="text" style={{ overflowWrap: 'break-word' }} className = "outline-none border-b-4 bg-btn-200 text-browns font-mono flex flex-row text-lg m-5 w-1/2" onChange={(e) => setEditableValue([editableValue[0], e.target.value])} value={editableValue[1]} />
+                                    <textarea type="text" style={{ overflowWrap: 'break-word' }} className = "outline-none border-b-4 bg-gray text-browns font-mono flex flex-row text-lg m-5 w-1/2" onChange={(e) => setEditableValue([editableValue[0], e.target.value])} value={editableValue[1]} />
                                     
-                                    <button className = "m-2 rounded-md bg-btn hover:bg-btn-200 ease-in-out duration-100 font-mono text-lg align-center p-2" onClick={() => setReplacing(id)}> 
+                                    <button className = "m-2 rounded-md bg-gray hover:bg-btn-200 ease-in-out duration-100 font-mono text-lg align-center p-2" onClick={() => setReplacing(id)}> 
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" class="w-12 h-6">
                                             <path strokeLinecap="round" strokeLinejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
                                         </svg>
@@ -220,7 +258,12 @@ export default function Page() {
             ))}
             <div className="m-3">
                 <button onClick={addTodb} className="font-mono text-xl flex justify-center align-center w-full p-2 hover:bg-btn-200 bg-btn rounded-md ease-in-out duration-100"> FINISH </button>
+                
             </div>
+            <div className="m-3">
+                <Link href="/" className="font-mono text-xl flex justify-center align-center w-full p-2 hover:bg-red-600 bg-red-500 rounded-md ease-in-out duration-100"> Delete Set </Link>
+            </div>
+            
 
                 { deleting != null && 
                             <div className={"backdrop-blur-lg fixed inset-0 bg-opacity-25 flex justify-center items-center"}>

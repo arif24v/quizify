@@ -24,7 +24,6 @@ export default function SearchResults() {
             let isIncluded = false;
             termsArr.forEach((str) => {
                 if (!isIncluded && domain.title.toLowerCase().includes(str.toLowerCase())) {
-                    console.log("here");
                     setMatchingDomains(prevMatchingDomains => [...prevMatchingDomains, domain]);
                     isIncluded = true;
                 }
@@ -70,7 +69,7 @@ export default function SearchResults() {
             </div>
 
             {chunkArray(matchingDomains, 4).map((row, rowIndex) => (
-                <div className="flex flex-row w-full pr-6">
+                <div key={rowIndex} className="flex flex-row w-full pr-6">
                     {row.map((domain) => (
                         <div key={domain.id} className="w-1/4 p-4">
                             <Domain title={domain.title} description={domain.description} author={domain.id} password={domain.password} />

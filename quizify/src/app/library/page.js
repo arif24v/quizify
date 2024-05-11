@@ -37,26 +37,26 @@ export default function Page() {
         <main>
             <div className="text-3xl font-mono text-black m-3"> Library </div>
             {chunkArray(domains, 4).map((row, rowIndex) => (
-                <div className="flex flex-row w-full pr-6">
-                    {row.map((domain) => (
-                        <div key={domain.id} className="w-1/4 p-4">
-                            <Domain title={domain.title} description={domain.description} author={domain.id} password={domain.password} />
+                <div key={rowIndex} className="flex flex-row w-full pr-6">
+                    {row.map((domain, num) => (
+                        <div key={num} className="w-1/4 p-4">
+                            <Domain key={num} title={domain.title} description={domain.description} author={domain.id} password={domain.password} />
                         </div>
                     ))}
                 </div>
             ))}
 
-            <footer class="mt-10 bg-gray flex flex-col space-y-10 justify-center">
+            <footer className="mt-10 bg-gray flex flex-col space-y-10 justify-center">
 
-                <nav class="mt-5 flex justify-center flex-wrap gap-6 text-gray-500 font-medium">
-                    <a class="hover:underline" href="/">Home</a>
-                    <a class="hover:underline" href="/create">Create</a>
-                    <a class="hover:underline" href="/library">Library</a>
-                    <a class="hover:underline" href="/login">Login</a>
-                    <a class="hover:underline" href="/profile">Profile</a>
+                <nav className="mt-5 flex justify-center flex-wrap gap-6 text-gray-500 font-medium">
+                    <a className="hover:underline" href="/">Home</a>
+                    <a className="hover:underline" href="/create">Create</a>
+                    <a className="hover:underline" href="/library">Library</a>
+                    <a className="hover:underline" href="/login">Login</a>
+                    <a className="hover:underline" href="/profile">Profile</a>
                 </nav>
 
-                <div class="flex justify-center space-x-5">
+                <div className="flex justify-center space-x-5">
                     <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
                         <img src="https://img.icons8.com/fluent/30/000000/facebook-new.png" />
                     </a>
@@ -73,7 +73,7 @@ export default function Page() {
                         <img src="https://img.icons8.com/fluent/30/000000/twitter.png" />
                     </a>
                 </div>
-                <p class="text-center text-gray-700 font-medium">&copy; 2024 Testerra Inc. All rights reservered.</p>
+                <p className="text-center text-gray-700 font-medium">&copy; 2024 Testerra Inc. All rights reservered.</p>
             </footer>
         </main>
     );

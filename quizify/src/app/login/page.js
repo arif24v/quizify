@@ -71,20 +71,20 @@ async function signin(u,p){
         
             </div>   
                     
-                <div class="gap-4 columns-2">
+                <div className="gap-4 columns-2">
                     <div>
-                        <img class="h-[93vh] w-[50vw]" src="img.png" alt="img.png" />
+                        <img className="h-[93vh] w-[50vw]" src="img.png" alt="img.png" />
                     </div>
                         <div className="flex flex-row">
                         <Link id="signupLink" href="" onClick={() => setState("Sign Up")} className="mt-20 mx-52 hover:underline text-3xl text-browns font-mono">Sign up</Link>
                         <Link id="loginLink" href="" onClick={() => setState("Log In")} className="mt-20 -mx-10 hover:underline text-3xl text-browns font-mono">Log in</Link>
                         </div>
                     <div>
-                        <img class="mt-5 mx-auto h-[25vh] w-[13vw]" src="owl.png" alt="owl.png" />
+                        <img className="mt-5 mx-auto h-[25vh] w-[13vw]" src="owl.png" alt="owl.png" />
                     </div>
                     <div>
                         <div className="flex flex-column">
-                            <div class="ml-40 text-xl text-browns font-mono">
+                            <div className="ml-40 text-xl text-browns font-mono">
                                 Username
                             </div>
                             
@@ -96,7 +96,7 @@ async function signin(u,p){
                     </div>
 
                     <div>
-                        <div class="mt-5 ml-40 text-xl text-browns font-mono">
+                        <div className="mt-5 ml-40 text-xl text-browns font-mono">
                             Password
                         </div>
                         <input id = "pass" type="text" className="ml-40 flex flex-row border-browns border-2 rounded-lg text-2xl form-control h-15 w-[30vw] p-2" placeholder="Password" />
