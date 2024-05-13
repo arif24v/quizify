@@ -93,7 +93,7 @@ export default function Home() {
                         <h1 className="text-2xl font-semibold text-gray-700 capitalize dark:text-white">Calming UI</h1>
 
                         <p className="text-gray-500">
-                            We purposefully chose the theme of our website to ensure that it is pleasant and relaxing to look at. No need to add on more stresses. Our website is simple and easy to use. We know you're already frustrated enough with the topics you're studying.
+                            We purposefully chose the theme of our website to ensure that it is pleasant and relaxing to look at. No need to add on more stresses. Our website is simple and easy to use. We know you&apos;re already frustrated enough with the topics you&apos;re studying.
                         </p>
 
                     </div>
