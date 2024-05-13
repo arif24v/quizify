@@ -5,13 +5,14 @@ import ReactDOM from "react-dom/client";
 import Link from "next/link"
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
 import { doc, setDoc, getDocs, getDoc} from "firebase/firestore";
-import { db } from "./../firebaseLogin.js"
+//import { db } from "./../firebaseLogin.js"
+
 export default function Page() {
     var stateIn = "Log In";
 async function register(u, p){
     let exist = false;
     //check for duplicate usernames
-    const querySnapshot = await getDocs(collection(db, 'logins'));
+    /*const querySnapshot = await getDocs(collection(db, 'logins'));
     querySnapshot.forEach((doc) => {
         // doc.data() is never undefined for query doc snapshots
         if(doc.data().user===u){
@@ -28,12 +29,12 @@ async function register(u, p){
           });
         console.log('new user');
         document.location.href = "http://localhost:3000";
-    }
+    }*/
 }
 async function signin(u,p){
-    const querySnapshot = await getDocs(collection(db, 'logins'));
+    //const querySnapshot = await getDocs(collection(db, 'logins'));
     let logged = false;
-    querySnapshot.forEach((doc) => {
+    /*querySnapshot.forEach((doc) => {
         // doc.data() is never undefined for query doc snapshots
         if(doc.data().user===u&&doc.data().pass===p){
             console.log("logged in");
@@ -44,7 +45,7 @@ async function signin(u,p){
         alert("Username or password is incorrect");
     } else{
         document.location.href = "http://localhost:3000";
-    }
+    }*/
 }
     function setState(s){
         stateIn = s;

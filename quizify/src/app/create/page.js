@@ -7,7 +7,7 @@
 "use client"
 
 import { collection, addDoc, getDoc, doc, deleteDoc, query, onSnapshot } from "firebase/firestore" 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Suspense } from 'react'
 import { db, imagedb } from "../firebase"
 import { getDownloadURL, ref, listAll, uploadBytes } from "firebase/storage"
 import { v4 } from "uuid"
@@ -163,6 +163,7 @@ export default function Page() {
 
     return (
         <main>
+            <Suspense fallback={<div>Loading...</div>}>
             <div className="flex flex-col bg-beige p-3 m-3 rounded-md">
                 <input type="text" className="h-full focus:text-lg ease-in-out duration-200 flex flex-col font-mono w-5/12 m-3 bg-transparent outline-none border-b-4 border-b-btn-200 pl-1 placeholder-gray-700 text-darkgray" onChange={(e) => setTitle(e.target.value)} placeholder="Enter Title" value={title}/>
                 <div className="flex flex-row w-full">
@@ -322,6 +323,7 @@ export default function Page() {
                         </div> 
                     </div>
                 }
+            </Suspense>
         </main>
     );
 }
