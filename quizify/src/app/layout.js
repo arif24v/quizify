@@ -1,7 +1,8 @@
 import { Inter } from "next/font/google"
-import { React } from "react"
+import { ReactDO } from "react"
 import Link from "next/link"
 import "./globals.css";
+
 
 
 
@@ -19,15 +20,18 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html>
-        <body className={"bg-beige "}>
-          <div className="w-full min-h-screen flex flex-col relative">
-            <Navbar />
-            {children}
+      <body className="bg-beige">
+        {/* Show top div for screen sizes greater than small */}
+        <div className="hidden lg:flex flex-col w-full min-h-screen relative">
+          <Navbar />
+          {children}
+        </div>
 
-          </div>
-
-        </body>
-
+        {/* Show bottom div for screen sizes less than small */}
+        <div className="lg:hidden text-5xl font-mono text-btn-200 p-14 flex text-center items-center align-middle w-full min-h-screen relative">
+          Please transition to a larger viewing screen
+        </div>
+      </body>
     </html>
   );
 }
