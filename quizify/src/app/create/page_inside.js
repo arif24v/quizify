@@ -224,7 +224,7 @@ export default function Page() {
                                 {   images[id] && (
                                     
                                     <div className="font-mono text-black bg-cyan-300 ease-in-out duration-100 pl-3 pr-3 mr-4 max-w-32 overflow-hidden rounded-md">
-                                        <div className="font-mono text-black bg-cyan-300 ease-in-out duration-100 overflow-hidden rounded-md text-nowrap"> {images[id].name == null ? "image" : image[id].name} </div>
+                                        <div className="font-mono text-black bg-cyan-300 ease-in-out duration-100 overflow-hidden rounded-md text-nowrap"> {images[id].name == null ? "image" : images[id].name} </div>
                                     </div>
                                 )}
                                 <button className="font-mono text-black bg-white hover:bg-gray-300 ease-in-out duration-100 pl-3 pr-3 mr-4 rounded-md" onClick={(e) => editCard(e, id)}> {editing == id ? "DONE EDITING" : "EDIT"} </button>

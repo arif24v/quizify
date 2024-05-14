@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from "react"
 import { collection, doc, addDoc, getDoc, query, onSnapshot } from "firebase/firestore" 
-import { db } from "./../firebase.js"
+import { db } from "../firebase.js"
 import { useSearchParams, useRouter } from "next/navigation";
-import Domain from "./../components/domains/domain.js";
+import Domain from "../components/domains/domain.js";
 
 
 export default function SearchResults() {
