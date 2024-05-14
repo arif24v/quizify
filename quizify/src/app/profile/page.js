@@ -25,7 +25,7 @@ export default function Page() {
 
                 </div>
                 <div className="flex flex-row">
-                    <input type="text" disabled={disabledUsername} className="flex flex-row border-btn-200 border-2 rounded-lg text-3xl form-control mt-5 h-16 w-70 p-2" id="inputPass" placeholder="JohnDoe69" />
+                    <input type="text" disabled={disabledUsername} className="flex flex-row border-btn-200 border-2 rounded-lg text-3xl form-control mt-5 h-16 w-70 p-2" id="inputPass" placeholder="JohnDoe1" />
                     <button className="hover:shadow-md hover:bg-btn-200 hover:shadow-btn-200 ease-in-out duration-200 text-2xl ml-5 mt-5 p-2 rounded-lg border-black bg-btn-100 h-16 w-20 font-mono border-2" onClick={() => setDisabledUsername(!disabledUsername)}>{disabledUsername ? "Edit" : "Save"}</button>
                 </div>
                 <div>
